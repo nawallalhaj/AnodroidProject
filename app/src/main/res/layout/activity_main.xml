@@ -10,8 +10,10 @@
         android:id="@+id/btlogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="154dp"
+        android:layout_marginTop="342dp"
         android:text="login"
-        tools:layout_editor_absoluteX="169dp"
-        tools:layout_editor_absoluteY="342dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

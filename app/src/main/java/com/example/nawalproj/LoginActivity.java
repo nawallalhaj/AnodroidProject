@@ -27,9 +27,9 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        emailEditText=findViewById(R.id.etemail);
-        passwordEditText=findViewById(R.id.etpassword);
-        loginButton = findViewById(R.id.btlogin2);
+        emailEditText=findViewById(R.id.EtEmail);
+        passwordEditText=findViewById(R.id.EtPass);
+        loginButton = findViewById(R.id.btLogin);
         Signup=findViewById(R.id.tvgoToSignup);
         Signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +53,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 } else {
 
-                                    Log.d("error","erro");
+                                    Log.d("error","error");
 
                                 }
                             }

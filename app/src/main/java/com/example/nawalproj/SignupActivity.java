@@ -1,22 +1,41 @@
 package com.example.nawalproj;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 
 public class SignupActivity extends AppCompatActivity {
+    EditText emailEditText;
+    EditText passwordEditText;
+    Button registerButton;
+    EditText fullNameEditText;
+    EditText repasswordEditText;
+    TextView errorText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
-        fullNameEditText=findViewById(R.id.fullNameEditText);
-        emailEditText=findViewById(R.id.emailEditText);
-        passwordEditText=findViewById(R.id.passwordEditText);
-        repasswordEditText=findViewById(R.id.repasswordEditText);
-        registerButton=findViewById(R.id.registerButton);
-        errorText=findViewById(R.id.errorText);
+        fullNameEditText=findViewById(R.id.etFullName);
+        emailEditText=findViewById(R.id.etEmailUp);
+        passwordEditText=findViewById(R.id.etPassUp);
+        repasswordEditText=findViewById(R.id.etconfirm);
+        registerButton=findViewById(R.id.btSignUp);
+
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,12 +83,12 @@ public class SignupActivity extends AppCompatActivity {
                                     .setDisplayName(fullNameEditText.getText().toString())
                                     .build();
 
-                            user.updateProfile(profileUpdates)
+                            ((FirebaseUser) user).updateProfile(profileUpdates)
                                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                startActivity(new Intent(CreateNewAcountActivity.this,MainActivity.class));
+                                                startActivity(new Intent(SignupActivity.this,MainActivity.class));
                                             }
                                         }
                                     });
