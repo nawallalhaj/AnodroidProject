@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbkg"
+    android:background="@drawable/backg3"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".SignupActivity">
@@ -32,7 +32,7 @@
                 android:layout_height="wrap_content"
                 android:text="SignUp"
                 android:textAlignment="center"
-                android:textColor="@color/purple"
+                android:textColor="@color/pink"
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
@@ -97,8 +97,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
-                android:backgroundTint="@color/purple"
+                android:backgroundTint="@color/pink"
                 android:text="SignUp"
+                android:textColor="@color/black"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
 
