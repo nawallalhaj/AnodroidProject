@@ -10,7 +10,10 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MenuItem;
+
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private DrawerLayout drawerLayout;
     TextView username,email;
+    NavigationView navigationView;
+    FirebaseAuth fauth;
 
 
     @Override
@@ -30,13 +35,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toolbar toolbar = findViewById(R.id.toolbar); //Ignore red line errors
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        fauth = FirebaseAuth.getInstance();
+        drawerLayout = findViewById(R.id.drawer_layout);
+        navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        FirebaseUser user = fauth.getCurrentUser();
         if (user != null) {
             // User is signed in
-            username = findViewById(R.id.tvUsername);
-            email = findViewById(R.id.tvUserEmail);
+            View header = navigationView.getHeaderView(0);
+            username = header.findViewById(R.id.tvUsername);
+            email = header.findViewById(R.id.tvUserEmail);
             username.setText(user.getDisplayName());
             email.setText(user.getEmail());
         } else {
@@ -44,9 +54,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent i = new Intent( MainActivity.this,LoginActivity.class);
             startActivity(i);
         }
-
         drawerLayout = findViewById(R.id.drawer_layout);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.open_nav,
@@ -76,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new product()).commit();
         }
         else if(R.id.nav_logout==item.getItemId()){
+            fauth.signOut();
             startActivity(new Intent(this,LoginActivity.class));
             Toast.makeText(this, "Logout!", Toast.LENGTH_SHORT).show();
         }

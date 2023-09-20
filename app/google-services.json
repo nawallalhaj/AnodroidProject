@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "462596428554",
+    "project_id": "nawalproj",
+    "storage_bucket": "nawalproj.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:462596428554:android:33d7d2f86b9e330016a0f3",
+        "android_client_info": {
+          "package_name": "com.example.nawalproj"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "462596428554-89k85u3f5tojvoempe88biga6drnf1q4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9ZwAyUXNXJmE2spGKXUkL0Vo6MaS1xc4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "462596428554-89k85u3f5tojvoempe88biga6drnf1q4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
