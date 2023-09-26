@@ -6,10 +6,12 @@ import java.util.List;
 public class Cart implements SqlInterface{
     private String cartid;
     private String uid;
+    private String pid;
     private List<Product>products;
-    public Cart(String cartid,String uid) {
+    public Cart(String cartid,String uid, String pid) {
         this.cartid=cartid;
         this.uid=uid;
+        this.pid=pid;
         products = new ArrayList<Product>();
     }
 
