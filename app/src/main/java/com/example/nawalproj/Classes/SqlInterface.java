@@ -1,7 +1,12 @@
 package com.example.nawalproj.Classes;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
 public interface SqlInterface {
-    boolean Add();
-    boolean Delete();
-    boolean update();
+
+    long Add(SQLiteDatabase db);
+    int Delete(SQLiteDatabase db, int id);
+    int Update(SQLiteDatabase db, int id);
+    Cursor Select(SQLiteDatabase db);
 }

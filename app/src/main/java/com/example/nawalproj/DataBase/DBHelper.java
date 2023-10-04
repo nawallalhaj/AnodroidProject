@@ -27,6 +27,30 @@ public  class DBHelper {
     private DataBaseHelper dbhelper;
     private SQLiteDatabase db;
 
+    public Context getmContext() {
+        return mContext;
+    }
+
+    public void setmContext(Context mContext) {
+        this.mContext = mContext;
+    }
+
+    public DataBaseHelper getDbhelper() {
+        return dbhelper;
+    }
+
+    public void setDbhelper(DataBaseHelper dbhelper) {
+        this.dbhelper = dbhelper;
+    }
+
+    public SQLiteDatabase getDb() {
+        return db;
+    }
+
+    public void setDb(SQLiteDatabase db) {
+        this.db = db;
+    }
+
     private class DataBaseHelper extends SQLiteOpenHelper {
         DataBaseHelper(Context context) {
             super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -34,7 +58,7 @@ public  class DBHelper {
 
         @Override
         public void onCreate(SQLiteDatabase sqLiteDatabase) {
-            sqLiteDatabase.execSQL(SQL_CREATE_PRODUCT);
+            //sqLiteDatabase.execSQL(SQL_CREATE_PRODUCT);
 
         }
 
@@ -77,7 +101,7 @@ public  class DBHelper {
                 COLUMN_PRODUCT_IMAGE,
                 COLUMN_PRODUCT_STOCK,
                 COLUMN_PRODUCT_SALEPRICE,
-                String.valueOf(COLUMN_PRODUCT_KARAT),
+                COLUMN_PRODUCT_KARAT,
                 COLUMN_PRODUCT_BUYPRICE
         };
         /*String selection = COLUMN_NAME_TITLE + " = ?";

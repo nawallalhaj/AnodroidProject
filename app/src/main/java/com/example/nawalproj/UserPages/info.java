@@ -1,4 +1,4 @@
-package com.example.nawalproj;
+package com.example.nawalproj.UserPages;
 
 import android.os.Bundle;
 
@@ -8,12 +8,14 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.nawalproj.R;
+
 /**
  * A simple {@link Fragment} subclass.
- * Use the {@link product#newInstance} factory method to
+ * Use the {@link info#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class product extends Fragment {
+public class info extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -24,7 +26,7 @@ public class product extends Fragment {
     private String mParam1;
     private String mParam2;
 
-    public product() {
+    public info() {
         // Required empty public constructor
     }
 
@@ -34,11 +36,11 @@ public class product extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment product.
+     * @return A new instance of fragment info.
      */
     // TODO: Rename and change types and number of parameters
-    public static product newInstance(String param1, String param2) {
-        product fragment = new product();
+    public static info newInstance(String param1, String param2) {
+        info fragment = new info();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -59,6 +61,6 @@ public class product extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product, container, false);
+        return inflater.inflate(R.layout.fragment_info, container, false);
     }
 }

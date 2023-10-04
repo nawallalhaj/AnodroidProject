@@ -1,4 +1,4 @@
-package com.example.nawalproj;
+package com.example.nawalproj.UserPages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -10,14 +10,14 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MenuItem;
 
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nawalproj.Admin.AddProductActivity;
+import com.example.nawalproj.R;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+
         fauth = FirebaseAuth.getInstance();
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
@@ -51,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             email.setText(user.getEmail());
         } else {
             // No user is signed in
-            Intent i = new Intent( MainActivity.this,LoginActivity.class);
+            Intent i = new Intent( MainActivity.this,AddProductActivity.class);
             startActivity(i);
         }
         drawerLayout = findViewById(R.id.drawer_layout);

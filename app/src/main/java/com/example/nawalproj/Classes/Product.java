@@ -1,10 +1,17 @@
 package com.example.nawalproj.Classes;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
+
+import static com.example.nawalproj.DataBase.TablesString.ProductTable.*;
+
 public class Product implements SqlInterface{
-    protected String pid;
+    protected int pid;
     protected String prodType;
-    protected String prodYOP;
-    protected String prodimg;
+    protected int prodYOP;//year of production
+    protected byte[] prodimg;
     protected int stock;
     protected double salesprice;
     protected double buyprice;
@@ -12,8 +19,7 @@ public class Product implements SqlInterface{
     protected int karat;
 
 
-    public Product(String pid, String prodType, String prodYOP, String prodimg, int stock, double salesprice, double buyprice, String prodDisc,int karat) {
-        this.pid = pid;
+   public Product(String prodType, int prodYOP, byte[] prodimg, int stock, double salesprice, double buyprice, String prodDisc,int karat) {
         this.prodType=prodType;
         this.prodYOP=prodYOP;
         this.prodimg=prodimg;
@@ -24,18 +30,150 @@ public class Product implements SqlInterface{
         this.karat=karat;
     }
 
+    public int getPid() {
+        return pid;
+    }
+
+    public void setPid(int pid) {
+        this.pid = pid;
+    }
+
+    public String getProdType() {
+        return prodType;
+    }
+
+    public void setProdType(String prodType) {
+        this.prodType = prodType;
+    }
+
+    public int getProdYOP() {
+        return prodYOP;
+    }
+
+    public void setProdYOP(int prodYOP) {
+        this.prodYOP = prodYOP;
+    }
+
+    public int getStock() {
+        return stock;
+    }
+
+    public void setStock(int stock) {
+        this.stock = stock;
+    }
+
+    public double getSalesprice() {
+        return salesprice;
+    }
+
+    public void setSalesprice(double salesprice) {
+        this.salesprice = salesprice;
+    }
+
+    public double getBuyprice() {
+        return buyprice;
+    }
+
+    public void setBuyprice(double buyprice) {
+        this.buyprice = buyprice;
+    }
+
+    public String getProdDisc() {
+        return prodDisc;
+    }
+
+    public void setProdDisc(String prodDisc) {
+        this.prodDisc = prodDisc;
+    }
+
+    public int getKarat() {
+        return karat;
+    }
+
+    public void setKarat(int karat) {
+        this.karat = karat;
+    }
+
+    //region Add,Delete,Update,Select Sql
     @Override
-    public boolean Add() {
-        return false;
+    public long Add(SQLiteDatabase db) {
+        // Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PRODUCT_TYPE, prodType);
+        values.put(COLUMN_PRODUCT_YOP,prodYOP);
+        values.put(COLUMN_PRODUCT_DESCRIPTION, prodDisc);
+        values.put(COLUMN_PRODUCT_BUYPRICE, buyprice);
+        values.put(COLUMN_PRODUCT_SALEPRICE, salesprice);
+        values.put(COLUMN_PRODUCT_STOCK, stock);
+        values.put(COLUMN_PRODUCT_IMAGE, prodimg);
+        values.put(COLUMN_PRODUCT_KARAT, karat);
+
+
+
+// Insert the new row, returning the primary key value of the new row
+        return db.insert(TABLE_PRODUCT, null, values);
+
     }
 
     @Override
-    public boolean Delete() {
-        return false;
+    public int Delete(SQLiteDatabase db, int id) {
+        String selection = BaseColumns._ID + " LIKE ?";
+// Specify arguments in placeholder order.
+        String[] selectionArgs = {id+""};
+// Issue SQL statement.
+        return db.delete(TABLE_PRODUCT, selection, selectionArgs);
+
     }
 
     @Override
-    public boolean update() {
-        return false;
+    public int Update(SQLiteDatabase db, int id) {
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PRODUCT_TYPE, prodType);
+        values.put(COLUMN_PRODUCT_YOP,prodYOP);
+        values.put(COLUMN_PRODUCT_DESCRIPTION, prodDisc);
+        values.put(COLUMN_PRODUCT_BUYPRICE, buyprice);
+        values.put(COLUMN_PRODUCT_SALEPRICE, salesprice);
+        values.put(COLUMN_PRODUCT_STOCK, stock);
+        values.put(COLUMN_PRODUCT_IMAGE, prodimg.toString());
+        values.put(COLUMN_PRODUCT_KARAT, karat);
+
+
+// Which row to update, based on the title
+        String selection = BaseColumns._ID + " LIKE ?";
+        String[] selectionArgs = { id+"" };
+
+        return  db.update(
+                TABLE_PRODUCT,
+                values,
+                selection,
+                selectionArgs);
+
+    }
+
+    @Override
+    public Cursor Select(SQLiteDatabase db) {
+        String[] projection = {
+                BaseColumns._ID,
+                COLUMN_PRODUCT_TYPE,
+                COLUMN_PRODUCT_YOP,
+                COLUMN_PRODUCT_DESCRIPTION,
+                COLUMN_PRODUCT_IMAGE,
+                COLUMN_PRODUCT_STOCK,
+                COLUMN_PRODUCT_SALEPRICE,
+                COLUMN_PRODUCT_KARAT,
+                COLUMN_PRODUCT_BUYPRICE
+        };
+// How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                BaseColumns._ID + " DESC";
+        Cursor c = db.query(TABLE_PRODUCT,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                sortOrder);
+        return c;
     }
 }

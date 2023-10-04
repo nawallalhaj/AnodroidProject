@@ -1,4 +1,4 @@
-package com.example.nawalproj;
+package com.example.nawalproj.UserPages;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.example.nawalproj.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -88,7 +89,7 @@ public class SignupActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                startActivity(new Intent(SignupActivity.this,MainActivity.class));
+                                                startActivity(new Intent(SignupActivity.this, MainActivity.class));
                                             }
                                         }
                                     });
