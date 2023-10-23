@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.example.nawalproj.R;
@@ -25,7 +26,8 @@ public class SignupActivity extends AppCompatActivity {
     EditText fullNameEditText;
     EditText repasswordEditText;
     TextView errorText;
-
+    Switch isadmin;
+    EditText adminCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +38,9 @@ public class SignupActivity extends AppCompatActivity {
         passwordEditText=findViewById(R.id.etPassUp);
         repasswordEditText=findViewById(R.id.etconfirm);
         registerButton=findViewById(R.id.btSignUp);
+        isadmin =findViewById(R.id.adminSwitch);
+        adminCode =findViewById(R.id.etAdminCode);
+        errorText=findViewById(R.id.tverrorText);
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,20 +73,28 @@ public class SignupActivity extends AppCompatActivity {
         }
         if(!repasswordEditText.getText().toString().equals(passwordEditText.getText().toString())){
             errorText.setVisibility(View.VISIBLE);
-            errorText.setText("password dosn't match");
+            errorText.setText("password doesn't match");
             return;
         }
+        if(isadmin.isChecked() && !adminCode.getText().toString().equals("110106")) {
+            errorText.setVisibility(View.VISIBLE);
+            errorText.setText("admin code is incorrect");
+            return;
+        }
+
         final FirebaseAuth mAuth=FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-
                             FirebaseUser user = mAuth.getCurrentUser();
-
+                            String name=fullNameEditText.getText().toString();
+                            if(isadmin.isChecked()){
+                                name = "admin: "+ name;
+                            }
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-                                    .setDisplayName(fullNameEditText.getText().toString())
+                                    .setDisplayName(name)
                                     .build();
 
                             ((FirebaseUser) user).updateProfile(profileUpdates)
@@ -89,7 +102,8 @@ public class SignupActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
-                                                startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                                Intent i = new Intent(SignupActivity.this, MainActivity.class);
+                                                SignupActivity.this.startActivity(i);
                                             }
                                         }
                                     });

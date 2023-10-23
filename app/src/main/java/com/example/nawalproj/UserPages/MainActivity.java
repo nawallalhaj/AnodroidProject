@@ -45,6 +45,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
         FirebaseUser user = fauth.getCurrentUser();
         if (user != null) {
+            if(user.getDisplayName().startsWith("admin:")){
+                Intent i = new Intent(MainActivity.this,AddProductActivity.class);
+                startActivity(i);
+            }
             // User is signed in
             View header = navigationView.getHeaderView(0);
             username = header.findViewById(R.id.tvUsername);
@@ -53,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             email.setText(user.getEmail());
         } else {
             // No user is signed in
-            Intent i = new Intent( MainActivity.this,AddProductActivity.class);
+            Intent i = new Intent( MainActivity.this,LoginActivity.class);
             startActivity(i);
         }
         drawerLayout = findViewById(R.id.drawer_layout);

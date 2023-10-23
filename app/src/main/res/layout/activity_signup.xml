@@ -41,7 +41,7 @@
                 android:id="@+id/etFullName"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
@@ -55,7 +55,7 @@
                 android:id="@+id/etEmailUp"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="20dp"
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_person_24"
                 android:drawablePadding="8dp"
@@ -102,8 +102,43 @@
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 app:cornerRadius="20dp" />
+    <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
+            <Switch
+                android:id="@+id/adminSwitch"
+                android:layout_width="110dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/custom_edittext"
+                android:drawablePadding="8dp"
+                android:text="Admin"
+                android:textSize="18dp"
+                android:textColorHighlight="@color/cardview_dark_background" />
+
+            <EditText
+                android:id="@+id/etAdminCode"
+                android:layout_width="125dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                android:drawablePadding="8dp"
+                android:ems="10"
+                android:hint="AdminCode"
+                android:inputType="numberSigned"
+                android:textColorHighlight="@color/cardview_dark_background" />
+    </LinearLayout>
 
         </LinearLayout>
 </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/tverrorText"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:text="You can not sign up. pls fix the error"
+        android:textSize="18dp"
+        android:visibility="invisible" />
 </LinearLayout>
