@@ -44,7 +44,6 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     DBHelper dbHelper;
     ProgressBar addItemProgressBar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -117,9 +116,38 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             if(p.Add(dbHelper.getDb())>-1){
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();
                 dbHelper.Close();
+                Intent i = new Intent(this, ShowProduct.class);
+                startActivity(i);
             }
-
-        }
+            }
+        if(view.getId()==R.id.btUpdate){
+        p.setPid(Integer.parseInt(selectedId));
+        p.setProdType(etType.getText().toString());
+        p.setProdDisc(etdisc.getText().toString());
+        p.setBuyprice(Double.parseDouble(etbuyprice.getText().toString()));
+        p.setSalesprice(Double.parseDouble(etsaleprice.getText().toString()));
+        p.setStock(Integer.parseInt(etstock.getText().toString()));
+        p.setKarat(Integer.parseInt(etkarat.getText().toString()));
+        p.setProdYOP(Integer.parseInt(etprodYOP.getText().toString()));
+        if(SelectedNewImage)
+            p.setProdimg(imageViewToByte());
+        else
+            p.setProdimg(image);
+        dbHelper.OpenWriteAble();
+        p.Update(dbHelper.getDb(),selectedId);
+        dbHelper.Close();
+        Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this,ShowProduct.class);
+        startActivity(i);
+    }
+        if(view.getId()==R.id.btDelete){
+        dbHelper.OpenWriteAble();
+        p.Delete(dbHelper.getDb(),selectedId);
+        dbHelper.Close();
+        Toast.makeText(this, "Deleted Successfully", Toast.LENGTH_SHORT).show();
+        Intent i = new Intent(this,ShowProduct.class);
+        startActivity(i);
+    }
         if(view.getId()==R.id.prodimg){
             Intent gallery = new Intent(Intent.ACTION_PICK,
                     MediaStore.Images.Media.INTERNAL_CONTENT_URI);
@@ -146,6 +174,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         if (resultCode == RESULT_OK && requestCode == 1){
             selectedImageUri = data.getData();
             imageButton.setImageURI(selectedImageUri);
+            SelectedNewImage = true;
         }
     }
 }

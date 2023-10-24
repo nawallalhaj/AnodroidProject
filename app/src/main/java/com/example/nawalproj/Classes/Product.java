@@ -96,6 +96,13 @@ public class Product implements SqlInterface{
     public void setKarat(int karat) {
         this.karat = karat;
     }
+    public byte[] getProdimg() {
+        return prodimg;
+    }
+
+    public void setProdimg(byte[] prodimg) {
+        this.prodimg = prodimg;
+    }
 
     //region Add,Delete,Update,Select Sql
     @Override
