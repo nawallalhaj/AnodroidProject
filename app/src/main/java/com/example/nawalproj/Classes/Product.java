@@ -29,6 +29,18 @@ public class Product implements SqlInterface{
         this.prodDisc=prodDisc;
         this.karat=karat;
     }
+    public Product(Product p) {
+        pid = p.getPid();
+        prodType = p.getProdType();
+        prodYOP = p.getProdYOP();
+        karat = p.getKarat();
+        prodDisc = p.getProdDisc();
+        stock = p.getStock();
+        salesprice = p.getSalesprice();
+        buyprice = p.getBuyprice();
+        prodimg = p.getProdimg();
+    }
+
 
     public Product() {
     }

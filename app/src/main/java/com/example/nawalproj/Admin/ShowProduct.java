@@ -59,7 +59,7 @@ public class ShowProduct extends AppCompatActivity implements AdapterView.OnItem
                 p.setSalesprice(c.getDouble(c.getColumnIndexOrThrow(COLUMN_PRODUCT_SALEPRICE)));
                 p.setStock(c.getInt(c.getColumnIndexOrThrow(COLUMN_PRODUCT_STOCK)));
                 p.setProdimg(c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE)));
-                String cat = c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_CATEGORY));
+                //String cat = c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_CATEGORY));
                /* if(cat.equals("PC"))
                     product_info[i]=new PC(p);
                 else if(cat.equals("LabTop"))

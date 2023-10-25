@@ -8,6 +8,7 @@
     android:background="@color/white"
     android:foreground="?android:attr/selectableItemBackground">
 
+
     <com.google.android.material.imageview.ShapeableImageView
         android:id="@+id/title_image"
         android:layout_width="80dp"
@@ -24,7 +25,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:textColor="@color/black"
-        android:text="Candidate Biden Called Saudi Arabia a Paeefr eefr"
+        android:text="this is list item"
         android:textSize="16dp"
         android:textStyle="bold"
         android:layout_marginStart="16dp"
