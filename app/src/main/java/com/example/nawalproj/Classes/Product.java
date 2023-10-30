@@ -199,7 +199,7 @@ public class Product implements SqlInterface{
         return c;
     }
 
-    public Cursor SelectById(SQLiteDatabase db,String id) {
+    public Cursor SelectById(SQLiteDatabase db,int id) {
         String[] projection = {
                 BaseColumns._ID,
                 COLUMN_PRODUCT_TYPE,
@@ -212,7 +212,7 @@ public class Product implements SqlInterface{
                 COLUMN_PRODUCT_BUYPRICE
         };
         String selection = BaseColumns._ID + " = ?";
-        String[] selectionArgs = {id};
+        String[] selectionArgs = {id+""};
 
         Cursor c = db.query(
                 TABLE_PRODUCT,   // The table to query

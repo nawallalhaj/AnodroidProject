@@ -38,7 +38,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     Button btadd,btupdate,btdelete;
     Product p;
     boolean SelectedNewImage;
-    String selectedId;
+    int SelectedId;
     byte[] image;
     Uri selectedImageUri;
     DBHelper dbHelper;
@@ -71,7 +71,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             btupdate.setVisibility(View.GONE);
         }else {
                 btadd.setVisibility(View.GONE);
-                selectedId = i.getStringExtra("Selected_Id");
+                SelectedId = Integer.parseInt(i.getStringExtra("Selected_Id"));
                 setProduct();
             }
         }
@@ -79,7 +79,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     private void setProduct() {
         dbHelper.OpenReadAble();
         p=new Product();
-        Cursor c = p.SelectById(dbHelper.getDb(),selectedId);
+        Cursor c = p.SelectById(dbHelper.getDb(),SelectedId);
         if(c!=null){
             c.moveToFirst();
             etType.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_TYPE)));
@@ -121,7 +121,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             }
             }
         if(view.getId()==R.id.btUpdate){
-        p.setPid(Integer.parseInt(selectedId));
+        p.setPid(SelectedId);
         p.setProdType(etType.getText().toString());
         p.setProdDisc(etdisc.getText().toString());
         p.setBuyprice(Double.parseDouble(etbuyprice.getText().toString()));
@@ -134,7 +134,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         else
             p.setProdimg(image);
         dbHelper.OpenWriteAble();
-        p.Update(dbHelper.getDb(),selectedId);
+        p.Update(dbHelper.getDb(),SelectedId);
         dbHelper.Close();
         Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this,ShowProduct.class);
@@ -142,7 +142,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
     }
         if(view.getId()==R.id.btDelete){
         dbHelper.OpenWriteAble();
-        p.Delete(dbHelper.getDb(),selectedId);
+        p.Delete(dbHelper.getDb(),SelectedId);
         dbHelper.Close();
         Toast.makeText(this, "Deleted Successfully", Toast.LENGTH_SHORT).show();
         Intent i = new Intent(this,ShowProduct.class);
