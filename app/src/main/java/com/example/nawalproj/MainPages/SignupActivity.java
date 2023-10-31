@@ -124,6 +124,10 @@ public class SignupActivity extends AppCompatActivity implements CompoundButton.
 
     @Override
     public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        if(isadmin.isChecked())
+            adminCode.setVisibility(View.VISIBLE);
+        else
+            adminCode.setVisibility(View.GONE);
 
     }
 }

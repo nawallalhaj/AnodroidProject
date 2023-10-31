@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nawalproj.Admin.AddProductActivity;
+import com.example.nawalproj.Admin.ShowProduct;
 import com.example.nawalproj.R;
 import com.example.nawalproj.UserPages.cart;
 import com.example.nawalproj.UserPages.home;
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         FirebaseUser user = fauth.getCurrentUser();
         if (user != null) {
             if(user.getDisplayName().startsWith("admin:")){
-                Intent i = new Intent(MainActivity.this,AddProductActivity.class);
+                Intent i = new Intent(MainActivity.this, ShowProduct.class);
                 startActivity(i);
             }
             // User is signed in

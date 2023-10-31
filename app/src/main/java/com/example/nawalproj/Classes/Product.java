@@ -224,5 +224,9 @@ public class Product implements SqlInterface{
                 null  );
         return c;
     }
+    @Override
+    public String toString(){
+       return prodType;
+    }
 
 }
