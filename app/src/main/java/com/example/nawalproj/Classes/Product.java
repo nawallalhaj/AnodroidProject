@@ -157,7 +157,7 @@ public class Product implements SqlInterface{
         values.put(COLUMN_PRODUCT_BUYPRICE, buyprice);
         values.put(COLUMN_PRODUCT_SALEPRICE, salesprice);
         values.put(COLUMN_PRODUCT_STOCK, stock);
-        values.put(COLUMN_PRODUCT_IMAGE, prodimg.toString());
+        values.put(COLUMN_PRODUCT_IMAGE, prodimg);
         values.put(COLUMN_PRODUCT_KARAT, karat);
 
 

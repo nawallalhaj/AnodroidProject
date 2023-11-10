@@ -72,6 +72,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         }else {
                 btadd.setVisibility(View.GONE);
                 SelectedId = Integer.parseInt(i.getStringExtra("Selected_Id"));
+                 SelectedNewImage=false;
                 setProduct();
             }
         }
@@ -121,6 +122,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             }
             }
         if(view.getId()==R.id.btUpdate){
+            p=new Product();
         p.setPid(SelectedId);
         p.setProdType(etType.getText().toString());
         p.setProdDisc(etdisc.getText().toString());
@@ -129,10 +131,12 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
         p.setStock(Integer.parseInt(etstock.getText().toString()));
         p.setKarat(Integer.parseInt(etkarat.getText().toString()));
         p.setProdYOP(Integer.parseInt(etprodYOP.getText().toString()));
+
         if(SelectedNewImage)
             p.setProdimg(imageViewToByte());
-        else
+        else{
             p.setProdimg(image);
+        }
         dbHelper.OpenWriteAble();
         p.Update(dbHelper.getDb(),SelectedId);
         dbHelper.Close();
