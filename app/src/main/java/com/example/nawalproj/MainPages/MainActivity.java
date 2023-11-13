@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.nawalproj.Admin.AddProductActivity;
 import com.example.nawalproj.Admin.ShowProduct;
+import com.example.nawalproj.DataBase.DBHelper;
 import com.example.nawalproj.R;
 import com.example.nawalproj.UserPages.cart;
 import com.example.nawalproj.UserPages.home;
@@ -26,6 +27,8 @@ import com.example.nawalproj.UserPages.product;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import static com.example.nawalproj.DataBase.TablesString.ProductTable.TABLE_PRODUCT;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,7 +45,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         fauth = FirebaseAuth.getInstance();
         drawerLayout = findViewById(R.id.drawer_layout);

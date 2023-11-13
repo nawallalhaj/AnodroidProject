@@ -20,6 +20,9 @@
         app:cardCornerRadius="30dp"
         app:cardElevation="20dp"
         android:background="@drawable/custom_edittext">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -163,6 +166,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/etBuyPrice" />
 
+            <Spinner
+                android:id="@+id/SpCategory"
+                android:layout_width="175dp"
+                android:layout_height="48dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginTop="15dp"
+                android:padding="8dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/etkarat" />
 
             <Button
                 android:id="@+id/addButton"
@@ -221,10 +233,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/btUpdate" />
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+
 
 
         </LinearLayout>
-
+    </ScrollView>
  </androidx.cardview.widget.CardView>
 
 </LinearLayout>

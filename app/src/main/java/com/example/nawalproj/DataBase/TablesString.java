@@ -12,6 +12,7 @@ public class TablesString {
         public static final String COLUMN_PRODUCT_TYPE = "ProductType";
         public static final String COLUMN_PRODUCT_YOP = "YearOfProduction";
         public static final String COLUMN_PRODUCT_DESCRIPTION = "Description";
+        public static final String COLUMN_PRODUCT_CATEGORY = "Category";
         public static final String COLUMN_PRODUCT_IMAGE = "ProductImage";
         public static final String COLUMN_PRODUCT_STOCK = "Stock";
         public static final String COLUMN_PRODUCT_SALEPRICE = "SalePrice";

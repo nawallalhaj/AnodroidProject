@@ -18,11 +18,12 @@
         android:layout_height="42dp"
         android:id="@+id/appName"
         android:text="Glamour Gems"
-        android:textSize="27sp"
+        android:fontFamily="@font/font1"
+        android:textSize="28sp"
         android:textColor="@color/pink"
         android:layout_marginStart="18dp"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/poppins_semibold"
+
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/myLogoImage"/>
@@ -30,8 +31,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:id="@+id/appDesc"
-        android:text="Shop with us! in our app you can find the most glamours pieces ;) thas is why we are called glamour gems"
-        android:textSize="14sp"
+        android:text="Shop with us! in our app you can find the most glamours pieces ;)"
+        android:textSize="20sp"
+        android:fontFamily="@font/font1"
         android:layout_marginStart="18dp"
         android:textColor="@color/pink"
         app:layout_constraintStart_toStartOf="parent"
@@ -74,8 +76,8 @@
                     android:id="@+id/braceletName"
                     android:text="Bracelets"
                     android:textSize="20sp"
+                    android:fontFamily="@font/font1"
                     android:textColor="@color/pink"
-                    android:fontFamily="@font/poppins_semibold"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/braceletImage"/>
@@ -105,7 +107,7 @@
                     android:text="Rings"
                     android:textSize="20sp"
                     android:textColor="@color/pink"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/font1"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/ringImage"/>
@@ -147,7 +149,7 @@
                     android:text="Necklaces"
                     android:textSize="20sp"
                     android:textColor="@color/pink"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/font1"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/necklaceImage"/>
@@ -177,7 +179,7 @@
                     android:text="Earrings"
                     android:textSize="20sp"
                     android:textColor="@color/pink"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/font1"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/earringImage"/>
@@ -219,7 +221,7 @@
                     android:text="Trendy"
                     android:textSize="20sp"
                     android:textColor="@color/pink"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/font1"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/fireImage"/>
@@ -249,7 +251,7 @@
                     android:text="Last pieces"
                     android:textSize="20sp"
                     android:textColor="@color/pink"
-                    android:fontFamily="@font/poppins_semibold"
+                    android:fontFamily="@font/font1"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
                     android:layout_below="@+id/lastImage"/>

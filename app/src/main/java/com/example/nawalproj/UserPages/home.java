@@ -1,5 +1,6 @@
 package com.example.nawalproj.UserPages;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -41,7 +42,9 @@ public class home extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v.getId() ==  R.id.ringImage){
-
+             Intent i = new Intent(getContext(), info.class);
+             i.putExtra("Category","Ring");
+             startActivity(i);
         }
         if(v.getId() ==  R.id.braceletImage){
 

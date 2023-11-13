@@ -13,13 +13,14 @@ public class Product implements SqlInterface{
     protected int prodYOP;//year of production
     protected byte[] prodimg;
     protected int stock;
+    protected String category;
     protected double salesprice;
     protected double buyprice;
     protected String prodDisc;
     protected int karat;
 
 
-   public Product(String prodType, int prodYOP, byte[] prodimg, int stock, double salesprice, double buyprice, String prodDisc,int karat) {
+   public Product(String prodType, int prodYOP, byte[] prodimg, int stock, double salesprice, double buyprice, String prodDisc,int karat,String category) {
         this.prodType=prodType;
         this.prodYOP=prodYOP;
         this.prodimg=prodimg;
@@ -28,6 +29,7 @@ public class Product implements SqlInterface{
         this.buyprice=buyprice;
         this.prodDisc=prodDisc;
         this.karat=karat;
+        this.category = category;
     }
     public Product(Product p) {
         pid = p.getPid();
@@ -39,6 +41,7 @@ public class Product implements SqlInterface{
         salesprice = p.getSalesprice();
         buyprice = p.getBuyprice();
         prodimg = p.getProdimg();
+        category = p.getCategory();
     }
 
 
@@ -115,6 +118,10 @@ public class Product implements SqlInterface{
     public void setProdimg(byte[] prodimg) {
         this.prodimg = prodimg;
     }
+    public String getCategory() {return category;}
+
+    public void setCategory(String category) {this.category = category;}
+
 
     //region Add,Delete,Update,Select Sql
     @Override
@@ -129,6 +136,7 @@ public class Product implements SqlInterface{
         values.put(COLUMN_PRODUCT_STOCK, stock);
         values.put(COLUMN_PRODUCT_IMAGE, prodimg);
         values.put(COLUMN_PRODUCT_KARAT, karat);
+        values.put(COLUMN_PRODUCT_CATEGORY, category);
 
 
 
@@ -160,6 +168,7 @@ public class Product implements SqlInterface{
         values.put(COLUMN_PRODUCT_IMAGE, prodimg);
         values.put(COLUMN_PRODUCT_KARAT, karat);
 
+        values.put(COLUMN_PRODUCT_CATEGORY, category);
 
 // Which row to update, based on the title
         String selection = BaseColumns._ID + " LIKE ?";
@@ -184,7 +193,8 @@ public class Product implements SqlInterface{
                 COLUMN_PRODUCT_STOCK,
                 COLUMN_PRODUCT_SALEPRICE,
                 COLUMN_PRODUCT_KARAT,
-                COLUMN_PRODUCT_BUYPRICE
+                COLUMN_PRODUCT_BUYPRICE,
+                COLUMN_PRODUCT_CATEGORY
         };
 // How you want the results sorted in the resulting Cursor
         String sortOrder =
@@ -209,7 +219,8 @@ public class Product implements SqlInterface{
                 COLUMN_PRODUCT_STOCK,
                 COLUMN_PRODUCT_SALEPRICE,
                 COLUMN_PRODUCT_KARAT,
-                COLUMN_PRODUCT_BUYPRICE
+                COLUMN_PRODUCT_BUYPRICE,
+                COLUMN_PRODUCT_CATEGORY
         };
         String selection = BaseColumns._ID + " = ?";
         String[] selectionArgs = {id+""};
