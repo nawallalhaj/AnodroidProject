@@ -42,18 +42,24 @@ public class home extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View v) {
         if(v.getId() ==  R.id.ringImage){
-             Intent i = new Intent(getContext(), info.class);
+             Intent i = new Intent(getContext(), ProductView.class);
              i.putExtra("Category","Ring");
              startActivity(i);
         }
         if(v.getId() ==  R.id.braceletImage){
-
+            Intent i = new Intent(getContext(), ProductView.class);
+            i.putExtra("Category","Bracelet");
+            startActivity(i);
         }
         if(v.getId() ==  R.id.earringImage){
-
+            Intent i = new Intent(getContext(), ProductView.class);
+            i.putExtra("Category","Earring");
+            startActivity(i);
         }
         if(v.getId() ==  R.id.necklaceImage){
-
+            Intent i = new Intent(getContext(), ProductView.class);
+            i.putExtra("Category","Necklace");
+            startActivity(i);
         }
         if(v.getId() ==  R.id.fireImage){
 
