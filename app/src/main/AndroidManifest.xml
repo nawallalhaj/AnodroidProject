@@ -13,10 +13,13 @@
         android:theme="@style/Theme.NawalProj"
         tools:targetApi="31">
         <activity
+            android:name=".UserPages.DetailedActivity"
+            android:exported="false" />
+        <activity
             android:name=".UserPages.ProductView"
             android:exported="false" />
         <activity
-            android:name=".MainPages.IntroActivity"
+            android:name=".MainPages.MainActivity"
             android:exported="false" />
         <activity
             android:name=".Admin.ShowProduct"
@@ -34,8 +37,9 @@
             android:name=".MainPages.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".MainPages.MainActivity"
-            android:exported="true">
+            android:name=".MainPages.IntroActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

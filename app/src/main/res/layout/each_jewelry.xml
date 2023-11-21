@@ -24,11 +24,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/eachJewelryName"
+            android:id="@+id/eachJewelryType"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="TextView"
+            android:text="JewelryType"
             android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -36,15 +36,15 @@
             app:layout_constraintTop_toBottomOf="@+id/eachJewelryIv" />
 
         <TextView
-            android:id="@+id/eachJewelryBrandNameTv"
+            android:id="@+id/eachJewelryYOPTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="TextView"
+            android:text="JewelryYOP"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eachJewelryName" />
+            app:layout_constraintTop_toBottomOf="@+id/eachJewelryType" />
 
         <ImageView
             android:id="@+id/eachJewelryAddToCartBtn"
@@ -55,7 +55,7 @@
             android:layout_marginBottom="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/eachJewelryBrandNameTv"
+            app:layout_constraintTop_toBottomOf="@+id/eachJewelryYOPTv"
             app:srcCompat="@drawable/baseline_add_shopping_cart_24" />
 
         <TextView
