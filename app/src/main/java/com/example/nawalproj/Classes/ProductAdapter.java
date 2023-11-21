@@ -71,7 +71,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         public ViewHolder(View itemView) {
             super(itemView);
 
-            tvTypeOfProduct = itemView.findViewById(R.id.eachJewelryYOPTv);
+            tvTypeOfProduct = itemView.findViewById(R.id.eachJewelryType);
             tvJewelryPrice = itemView.findViewById(R.id.eachJewelryPriceTv);
             tvJewelryYOP = itemView.findViewById(R.id.eachJewelryYOPTv);
             imageOfProduct = itemView.findViewById(R.id.eachJewelryIv);
