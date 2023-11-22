@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.nawalproj.R;
 
+import com.example.nawalproj.UserPages.ProductInfo;
 import com.example.nawalproj.UserPages.info;
 
 import java.util.List;
@@ -66,7 +67,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         // here we will find the views on which we will inflate our data
 
         TextView tvTypeOfProduct, tvJewelryPrice, tvJewelryYOP;
-        ImageView imageOfProduct;
+        ImageView imageOfProduct, addToCartBtn, favBtn;
 
         public ViewHolder(View itemView) {
             super(itemView);
@@ -75,16 +76,27 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
             tvJewelryPrice = itemView.findViewById(R.id.eachJewelryPriceTv);
             tvJewelryYOP = itemView.findViewById(R.id.eachJewelryYOPTv);
             imageOfProduct = itemView.findViewById(R.id.eachJewelryIv);
+            addToCartBtn = itemView.findViewById(R.id.eachJewelryAddToCartBtn);
+            addToCartBtn.setOnClickListener(this);
+            favBtn = itemView.findViewById(R.id.favbtn);
+            favBtn.setOnClickListener(this);
             itemView.setOnClickListener(this);
 
         }
 
         @Override
         public void onClick(View v) {
+            if(v.getId() == R.id.eachJewelryAddToCartBtn){
 
-            Intent intent = new Intent(v.getContext(),info.class);
-            intent.putExtra("id",productList.get(getLayoutPosition()).getPid()+"");
-            v.getContext().startActivity(intent);
+            }else if(v.getId() == R.id.favbtn){
+
+            }
+            else {
+
+                Intent intent = new Intent(v.getContext(), ProductInfo.class);
+                intent.putExtra("id", productList.get(getLayoutPosition()).getPid() + "");
+                v.getContext().startActivity(intent);
+            }
         }
     }
 }
