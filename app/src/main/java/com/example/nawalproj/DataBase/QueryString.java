@@ -1,5 +1,6 @@
 package com.example.nawalproj.DataBase;
 import com.example.nawalproj.Classes.AuctionParticipants;
+import com.example.nawalproj.Classes.Favorite;
 import com.example.nawalproj.DataBase.TablesString.*;
 public class QueryString {
 
@@ -22,7 +23,13 @@ public class QueryString {
             "CREATE TABLE " + CartTable.TABLE_CART + " (" +
                     CartTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     CartTable.COLUMN_PRODUCT_ID + " INTEGER," +
+                    CartTable.COLUMN_AMOUNT + " INTEGER," +
                     CartTable.COLUMN_USER_ID + " TEXT);";
+    public static final String SQL_CREATE_FAVORITE =
+            "CREATE TABLE " + FavoriteTable.TABLE_FAVORITE + " (" +
+                    FavoriteTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    FavoriteTable.COLUMN_PRODUCT_ID + " INTEGER," +
+                    FavoriteTable.COLUMN_USER_ID + " TEXT);";
 
     public static final String SQL_CREATE_SALE =
             "CREATE TABLE " + SaleTable.TABLE_SALE + " (" +
@@ -54,6 +61,8 @@ public class QueryString {
 
     public static final String SQL_DELETE_CART =
             "DROP TABLE IF EXISTS " + CartTable.TABLE_CART;
+    public static final String SQL_DELETE_FAVORITE =
+            "DROP TABLE IF EXISTS " + FavoriteTable.TABLE_FAVORITE;
 
     public static final String SQL_DELETE_SALE =
             "DROP TABLE IF EXISTS " + SaleTable.TABLE_SALE;

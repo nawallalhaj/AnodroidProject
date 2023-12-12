@@ -141,4 +141,6 @@
         android:text="You can not sign up. pls fix the error"
         android:textSize="18dp"
         android:visibility="invisible" />
+
+
 </LinearLayout>

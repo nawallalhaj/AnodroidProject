@@ -88,45 +88,6 @@ public  class DBHelper {
     public void Close(){
         dbhelper.close();
     }
-    public void InsertImage(byte[] imageByte){
-        ContentValues cv = new ContentValues();
-        cv.put(IMAGE,imageByte);
-    }
-    public byte[] RetriveImageFromDB(){
-        String[] projection = {
-                BaseColumns._ID,
-                COLUMN_PRODUCT_TYPE,
-                COLUMN_PRODUCT_YOP,
-                COLUMN_PRODUCT_DESCRIPTION,
-                COLUMN_PRODUCT_IMAGE,
-                COLUMN_PRODUCT_STOCK,
-                COLUMN_PRODUCT_SALEPRICE,
-                COLUMN_PRODUCT_KARAT,
-                COLUMN_PRODUCT_BUYPRICE
-        };
-        /*String selection = COLUMN_NAME_TITLE + " = ?";
-        String[] selectionArgs = { "My Title" };*/
-
-// How you want the results sorted in the resulting Cursor
-        String sortOrder =
-                BaseColumns._ID + " DESC";
-        Cursor c = db.query(true,TABLE_PRODUCT,
-                projection,
-                null,
-                null,
-                null,
-                null,
-                sortOrder,
-                "1");
-
-        if(c.moveToFirst()){
-            byte[] blob = c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE));
-            c.close();
-            return blob;
-        }
-        c.close();
-        return null;
-    }
 
 }
 

@@ -27,9 +27,18 @@ public class TablesString {
         public static final String TABLE_CART = "Cart";
         public static final String COLUMN_PRODUCT_ID = "PID";
         public static final String COLUMN_USER_ID = "UID";
+        public static final String COLUMN_AMOUNT = "amount";
 
     }
     //endregion
+
+    //region Favorite Table
+    public static class FavoriteTable implements BaseColumns {
+        public static final String TABLE_FAVORITE = "Favorite";
+        public static final String COLUMN_PRODUCT_ID = "PID";
+        public static final String COLUMN_USER_ID = "UID";
+
+    }
 
     //region Sale Table
     public static class SaleTable implements BaseColumns {
@@ -38,6 +47,7 @@ public class TablesString {
         public static final String COLUMN_SALE_USER_ID = "UID";
 
     }
+
     public static class AuctionTable implements BaseColumns{
         public static final String TABLE_AUCTION = "AUCTION";
         public static final String COLUMN_AUCTION_PROD_ID = "PID";

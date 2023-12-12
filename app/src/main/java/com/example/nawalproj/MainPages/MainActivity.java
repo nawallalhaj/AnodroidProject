@@ -28,7 +28,11 @@ import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.example.nawalproj.DataBase.TablesString.ProductTable.TABLE_PRODUCT;
+import static com.example.nawalproj.DataBase.QueryString.SQL_CREATE_CART;
+import static com.example.nawalproj.DataBase.QueryString.SQL_CREATE_FAVORITE;
+import static com.example.nawalproj.DataBase.QueryString.SQL_DELETE_CART;
+import static com.example.nawalproj.DataBase.QueryString.SQL_DELETE_FAVORITE;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -42,10 +46,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        /*DBHelper dbHelper = new DBHelper(this);
+        dbHelper.OpenWriteAble();
+        dbHelper.getDb().execSQL(SQL_DELETE_FAVORITE);
+        dbHelper.getDb().execSQL(SQL_CREATE_FAVORITE);
+        dbHelper.getDb().execSQL(SQL_DELETE_CART);
+        dbHelper.getDb().execSQL(SQL_CREATE_CART);
+        dbHelper.Close();*/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         fauth = FirebaseAuth.getInstance();
         drawerLayout = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);

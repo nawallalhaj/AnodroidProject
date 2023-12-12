@@ -131,7 +131,7 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
                 Intent i = new Intent(this, ShowProduct.class);
                 startActivity(i);
             }
-            }
+        }
         if(view.getId()==R.id.btUpdate){
             p=new Product();
         p.setPid(SelectedId);

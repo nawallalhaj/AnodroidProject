@@ -86,7 +86,9 @@ public class home extends Fragment implements View.OnClickListener {
 
         }
         if(v.getId() ==  R.id.lastImage){
-
+            Intent i = new Intent(getContext(), ProductView.class);
+            i.putExtra("Category","LastPieces");
+            startActivity(i);
         }
 
     }

@@ -31,6 +31,18 @@ public class Product implements SqlInterface{
         this.karat=karat;
         this.category = category;
     }
+    public Product(int pid,String prodType, int prodYOP, byte[] prodimg, int stock, double salesprice, double buyprice, String prodDisc,int karat,String category) {
+        this.pid = pid;
+        this.prodType=prodType;
+        this.prodYOP=prodYOP;
+        this.prodimg=prodimg;
+        this.stock=stock;
+        this.salesprice=salesprice;
+        this.buyprice=buyprice;
+        this.prodDisc=prodDisc;
+        this.karat=karat;
+        this.category = category;
+    }
     public Product(Product p) {
         pid = p.getPid();
         prodType = p.getProdType();
@@ -251,6 +263,32 @@ public class Product implements SqlInterface{
         };
         String selection = COLUMN_PRODUCT_CATEGORY + " = ?";
         String[] selectionArgs = {category};
+
+        Cursor c = db.query(
+                TABLE_PRODUCT,   // The table to query
+                projection,             // The array of columns to return (pass null to get all)
+                selection,              // The columns for the WHERE clause
+                selectionArgs,          // The values for the WHERE clause
+                null,                   // don't group the rows
+                null,                   // don't filter by row groups
+                null  );
+        return c;
+    }
+    public Cursor SelectLastPieces(SQLiteDatabase db) {
+        String[] projection = {
+                BaseColumns._ID,
+                COLUMN_PRODUCT_TYPE,
+                COLUMN_PRODUCT_YOP,
+                COLUMN_PRODUCT_DESCRIPTION,
+                COLUMN_PRODUCT_IMAGE,
+                COLUMN_PRODUCT_STOCK,
+                COLUMN_PRODUCT_SALEPRICE,
+                COLUMN_PRODUCT_KARAT,
+                COLUMN_PRODUCT_BUYPRICE,
+                COLUMN_PRODUCT_CATEGORY
+        };
+        String selection = COLUMN_PRODUCT_STOCK + " < ?";
+        String[] selectionArgs = {"4"};
 
         Cursor c = db.query(
                 TABLE_PRODUCT,   // The table to query

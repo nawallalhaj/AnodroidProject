@@ -1,28 +1,35 @@
 package com.example.nawalproj.Classes;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.BaseColumns;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.example.nawalproj.DataBase.TablesString.CartTable.*;
+
+
 public class Cart implements SqlInterface{
-    private String cartid;
+
+    private int cartid;
     private String uid;
     private int pid;
-    private List<Product>products;
-    public Cart(String cartid,String uid, int pid) {
-        this.cartid=cartid;
+    private int amount;
+
+    public Cart(String uid, int pid,int amount) {
+
         this.uid=uid;
         this.pid=pid;
-        products = new ArrayList<Product>();
+        this.amount = amount;
     }
 
-    public String getCartid() {
+    public int getCartid() {
         return cartid;
     }
 
-    public void setCartid(String cartid) {
+    public void setCartid(int cartid) {
         this.cartid = cartid;
     }
 
@@ -42,31 +49,69 @@ public class Cart implements SqlInterface{
         this.pid = pid;
     }
 
-    public List<Product> getProducts() {
-        return products;
+    public int getAmount() {
+        return amount;
     }
 
-    public void setProducts(List<Product> products) {
-        this.products = products;
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 
     @Override
     public long Add(SQLiteDatabase db) {
-        return 0;
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PRODUCT_ID, pid);
+        values.put(COLUMN_USER_ID,uid);
+        values.put(COLUMN_AMOUNT, amount);
+// Insert the new row, returning the primary key value of the new row
+        return db.insert(TABLE_CART, null, values);
     }
 
     @Override
     public int Delete(SQLiteDatabase db, int id) {
-        return 0;
+        String selection = BaseColumns._ID + " LIKE ?";
+        // Specify arguments in placeholder order.
+        String[] selectionArgs = {id+""};
+// Issue SQL statement.
+        return db.delete(TABLE_CART, selection, selectionArgs);
     }
 
     @Override
     public int Update(SQLiteDatabase db, int id) {
-        return 0;
+        // New value for one column
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_PRODUCT_ID, pid);
+        values.put(COLUMN_USER_ID,uid);
+        values.put(COLUMN_AMOUNT, amount);
+// Which row to update, based on the title
+        String selection = BaseColumns._ID + " LIKE ?";
+        String[] selectionArgs = { id+"" };
+
+        return  db.update(
+                TABLE_CART,
+                values,
+                selection,
+                selectionArgs);
     }
 
     @Override
     public Cursor Select(SQLiteDatabase db) {
-        return null;
+        String[] projection = {
+                BaseColumns._ID,
+                COLUMN_PRODUCT_ID,
+                COLUMN_USER_ID,
+                COLUMN_AMOUNT
+        };
+// How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                BaseColumns._ID + " DESC";
+        Cursor c = db.query(TABLE_CART,
+                projection,
+                null,
+                null,
+                null,
+                null,
+                sortOrder);
+        return c;
     }
 }
