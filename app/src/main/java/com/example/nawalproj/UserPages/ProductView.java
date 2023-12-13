@@ -1,20 +1,26 @@
 package com.example.nawalproj.UserPages;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.nawalproj.Classes.Product;
 import com.example.nawalproj.Classes.ProductAdapter;
 import com.example.nawalproj.DataBase.DBHelper;
+import com.example.nawalproj.MainPages.LoginActivity;
+import com.example.nawalproj.MainPages.SignupActivity;
 import com.example.nawalproj.R;
 import android.database.Cursor;
 import android.provider.BaseColumns;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.nawalproj.Classes.Product;
 
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_BUYPRICE;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_CATEGORY;
@@ -33,26 +39,27 @@ public class ProductView extends AppCompatActivity {
     ProductAdapter mAdapter;
     DBHelper dbHelper;
     String selctedCategory;
+    CardView cardView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product_view);
         Bundle extras = getIntent().getExtras();
-        selctedCategory= extras.getString("Category");
+        selctedCategory = extras.getString("Category");
         recyclerView = findViewById(R.id.mainRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(null));
         productList = new ArrayList<>();
         dbHelper = new DBHelper(this);
         dbHelper = dbHelper.OpenReadAble();
-        Product p = new Product(),p2;
+        Product p = new Product(), p2;
         Cursor c;
-        if(selctedCategory == "LastPieces"){
+        if (selctedCategory == "LastPieces") {
             c = p.SelectLastPieces(dbHelper.getDb());
-        }
-        else
-            c = p.SelectByCategory(dbHelper.getDb(),selctedCategory);
+        } else
+            c = p.SelectByCategory(dbHelper.getDb(), selctedCategory);
         c.moveToFirst();
-        while(!c.isAfterLast()){
+        while (!c.isAfterLast()) {
             p2 = new Product(c.getInt(c.getColumnIndexOrThrow(BaseColumns._ID)),
                     c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_TYPE)),
                     c.getInt(c.getColumnIndexOrThrow(COLUMN_PRODUCT_YOP)),
@@ -69,7 +76,7 @@ public class ProductView extends AppCompatActivity {
         dbHelper.Close();
         // adapter
         mAdapter = new ProductAdapter(this, productList);
-        recyclerView.setAdapter(mAdapter);
-
+        recyclerView.setAdapter(mAdapter)
+        ;
     }
 }

@@ -1,7 +1,6 @@
 package com.example.nawalproj.Classes;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,8 +19,7 @@ import com.example.nawalproj.DataBase.DBHelper;
 import com.example.nawalproj.DataBase.TablesString;
 import com.example.nawalproj.R;
 
-import com.example.nawalproj.UserPages.ProductInfo;
-import com.example.nawalproj.UserPages.info;
+import com.example.nawalproj.UserPages.DetailedActivity;
 import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.List;
@@ -52,6 +50,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
 
         // here we will find the position and start setting the output on our views
 
+
         String typeOfProduct = productList.get(position).getProdType();
         int yop = productList.get(position).getProdYOP();
         double price = productList.get(position).getSalesprice();
@@ -72,6 +71,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         holder.tvJewelryPrice.setText(price+"");
         holder.tvJewelryYOP.setText(yop+"");
         holder.imageOfProduct.setImageBitmap(bm);
+
 
     }
 
@@ -143,10 +143,11 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ViewHold
         }
         @Override
         public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ProductInfo.class);
+                Intent intent = new Intent(v.getContext(), DetailedActivity.class);
                 intent.putExtra("id", productList.get(getLayoutPosition()).getPid() + "");
                 v.getContext().startActivity(intent);
             }
+
         }
     }
 

@@ -13,10 +13,10 @@
         android:theme="@style/Theme.NawalProj"
         tools:targetApi="31">
         <activity
-            android:name=".UserPages.ProductInfo"
+            android:name=".UserPages.DetailedActivity"
             android:exported="false" />
         <activity
-            android:name=".UserPages.DetailedActivity"
+            android:name=".UserPages.ProductInfo"
             android:exported="false" />
         <activity
             android:name=".UserPages.ProductView"
