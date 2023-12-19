@@ -17,6 +17,21 @@ public class QueryString {
                     ProductTable.COLUMN_PRODUCT_BUYPRICE + " DOUBLE,"+
                     ProductTable.COLUMN_PRODUCT_KARAT + " INTEGER," +
                     ProductTable.COLUMN_PRODUCT_IMAGE + " BLOB);";
+    public static final String SQL_CREATE_AUCTIONPRODUCT =
+            "CREATE TABLE " + AuctionProductTable.TABLE_AUCTIONPRODUCT + " (" +
+                    AuctionProductTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE + " TEXT," +
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_YOP + " INTEGER," +
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION + " TEXT," +
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE + " DOUBLE,"+
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE + " BLOB);";
+    public static final String SQL_CREATE_AUCTIONBIDDER =
+            "CREATE TABLE " + AuctionBiddersTable.TABLE_AUCTIONBIDDER + " (" +
+                    AuctionBiddersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                    AuctionBiddersTable.COLUMN_AUCTIONBIDDER_NAME+ " TEXT," +
+                    AuctionBiddersTable.COLUMN_AUCTIONBIDDERPRODUCT_TYPE + " TEXT," +
+                    AuctionBiddersTable.COLUMN_AUCTIONBIDDER_PRICE+ " DOUBLE,"+
+                    AuctionBiddersTable.COLUMN_AUCTIONBIDDERPRODUCT_IMAGE+ " BLOB);";
 
 
     public static final String SQL_CREATE_CART =

@@ -18,7 +18,27 @@ public class TablesString {
         public static final String COLUMN_PRODUCT_SALEPRICE = "SalePrice";
         public static final String COLUMN_PRODUCT_BUYPRICE = "BuyPrice";
         public static final String COLUMN_PRODUCT_KARAT = "Karat";
+    }
+    //endregion
 
+    //region Auction Product Table
+    public static class AuctionProductTable implements BaseColumns {
+        public static final String TABLE_AUCTIONPRODUCT = "AuctionProduct";
+        public static final String COLUMN_AUCTIONPRODUCT_TYPE = "ProductType";
+        public static final String COLUMN_AUCTIONPRODUCT_YOP = "YearOfProduction";
+        public static final String COLUMN_AUCTIONPRODUCT_DESCRIPTION = "Description";
+        public static final String COLUMN_AUCTIONPRODUCT_IMAGE = "ProductImage";
+        public static final String COLUMN_AUCTIONPRODUCT_MINPRICE = "MinPrice";
+    }
+    //endregion
+    //region Auction Bidders Table
+    public static class AuctionBiddersTable implements BaseColumns {
+        public static final String TABLE_AUCTIONBIDDER = "AuctionBidder";
+        public static final String COLUMN_AUCTIONBIDDER_NAME = "BidderName";
+
+        public static final String COLUMN_AUCTIONBIDDERPRODUCT_TYPE = "AuctionProductType";
+        public static final String COLUMN_AUCTIONBIDDERPRODUCT_IMAGE = "AuctionProductImage";
+        public static final String COLUMN_AUCTIONBIDDER_PRICE = "Price";
     }
     //endregion
 

@@ -14,4 +14,12 @@
     <color name="pinkshade2">#E5679B</color>
     <color name="light_gray">#e0e0e0</color>
     <color name="green_color">#00D100</color>
+    <color name="background2">#080808</color>
+    <color name="background3">#080808</color>
+    <color name="background4">#FF000000</color>
+    <color name="background5">#080808</color>
+    <color name="background6">#050505</color>
+    <color name="textColor">#FFFFFFFF</color>
+    <color name="textColor2">#ef0148</color>
+    <color name="background">#FF000000</color>
 </resources>

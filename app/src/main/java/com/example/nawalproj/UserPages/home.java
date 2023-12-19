@@ -39,7 +39,7 @@ import com.example.nawalproj.R;
  */
 public class home extends Fragment implements View.OnClickListener {
 
-    ImageView ringimage, braceletimage, earringimage, necklaceimage, trendeyimage, lastpiecesimage;
+    ImageView ringimage, braceletimage, earringimage, necklaceimage, trendeyimage, lastpiecesimage, auctionimage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,6 +57,9 @@ public class home extends Fragment implements View.OnClickListener {
                trendeyimage.setOnClickListener(this);
                lastpiecesimage = v.findViewById(R.id.lastImage);
                lastpiecesimage.setOnClickListener(this);
+               auctionimage = v.findViewById(R.id.auctionImage);
+               auctionimage.setOnClickListener(this);
+
         return v;
     }
 
