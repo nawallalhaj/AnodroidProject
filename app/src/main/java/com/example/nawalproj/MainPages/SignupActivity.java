@@ -27,8 +27,8 @@ public class SignupActivity extends AppCompatActivity implements CompoundButton.
     EditText fullNameEditText;
     EditText repasswordEditText;
     TextView errorText;
-    Switch isadmin;
-    EditText adminCode;
+    Switch isadmin, isbidder;
+    EditText adminCode, bidderCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,8 +42,12 @@ public class SignupActivity extends AppCompatActivity implements CompoundButton.
         isadmin =findViewById(R.id.adminSwitch);
         adminCode =findViewById(R.id.etAdminCode);
         adminCode.setVisibility(View.GONE);
+        isbidder =findViewById(R.id.bidderSwitch);
+        bidderCode =findViewById(R.id.etBidderCode);
+        bidderCode.setVisibility(View.GONE);
         errorText=findViewById(R.id.tverrorText);
         isadmin.setOnCheckedChangeListener(this);
+        isbidder.setOnCheckedChangeListener(this);
 
 
         registerButton.setOnClickListener(new View.OnClickListener() {
@@ -85,6 +89,11 @@ public class SignupActivity extends AppCompatActivity implements CompoundButton.
             errorText.setText("admin code is incorrect");
             return;
         }
+        if(isbidder.isChecked() && !bidderCode.getText().toString().equals("11012006")) {
+            errorText.setVisibility(View.VISIBLE);
+            errorText.setText("bidder code is incorrect");
+            return;
+        }
 
         final FirebaseAuth mAuth=FirebaseAuth.getInstance();
         mAuth.createUserWithEmailAndPassword(emailEditText.getText().toString(), passwordEditText.getText().toString())
@@ -96,6 +105,9 @@ public class SignupActivity extends AppCompatActivity implements CompoundButton.
                             String name=fullNameEditText.getText().toString();
                             if(isadmin.isChecked()){
                                 name = "admin: "+ name;
+                            }
+                            if(isbidder.isChecked()){
+                                name = "bidder: "+ name;
                             }
                             UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
                                     .setDisplayName(name)
@@ -128,6 +140,10 @@ public class SignupActivity extends AppCompatActivity implements CompoundButton.
             adminCode.setVisibility(View.VISIBLE);
         else
             adminCode.setVisibility(View.GONE);
+        if(isbidder.isChecked())
+            bidderCode.setVisibility(View.VISIBLE);
+        else
+            bidderCode.setVisibility(View.GONE);
 
     }
 }

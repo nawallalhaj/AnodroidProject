@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.example.nawalproj.Classes.Favorite;
 import com.example.nawalproj.Classes.Product;
 import com.example.nawalproj.Classes.ProductAdapter;
 import com.example.nawalproj.DataBase.DBHelper;
@@ -17,6 +18,7 @@ import com.example.nawalproj.R;
 import android.database.Cursor;
 import android.provider.BaseColumns;
 import android.view.View;
+import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,6 +42,7 @@ public class ProductView extends AppCompatActivity {
     DBHelper dbHelper;
     String selctedCategory;
     CardView cardView;
+    ImageView favbtn, cartiv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +79,7 @@ public class ProductView extends AppCompatActivity {
         dbHelper.Close();
         // adapter
         mAdapter = new ProductAdapter(this, productList);
-        recyclerView.setAdapter(mAdapter)
-        ;
+        recyclerView.setAdapter(mAdapter);
     }
+
 }

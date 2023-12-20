@@ -24,14 +24,19 @@ import com.google.firebase.auth.FirebaseUser;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_BUYPRICE;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_DESCRIPTION;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_IMAGE;
+import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_KARAT;
+import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_SALEPRICE;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_STOCK;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_TYPE;
 
 public class DetailedActivity extends AppCompatActivity {
     ImageView imageView;
     ImageButton plusquantity, minusquantity;
-    TextView quantitynumber, producttype, productprice,description, prodyop, karat;
-    CheckBox addKeyboard, addMouse;
+    TextView quantitynumber;
+    TextView producttype;
+    TextView productprice;
+    TextView description;
+    TextView karat;
     Button addtoCart;
     int quantity,stock;
     double basePrice = 0;
@@ -48,7 +53,6 @@ public class DetailedActivity extends AppCompatActivity {
         producttype = findViewById(R.id.detailActivityJewelryTypeTv);
         productprice =findViewById(R.id.detailActivityJewelryPriceTv);
         karat = findViewById(R.id.detailActivityJewelryKaratTv);
-        prodyop = findViewById(R.id.detailActivityJewelryYOPTv);
         addtoCart = findViewById(R.id.detailActivityAddToCartBtn);
         description = findViewById(R.id.descriptionTV);
         dbHelper = new DBHelper(this);
@@ -58,12 +62,16 @@ public class DetailedActivity extends AppCompatActivity {
         addtoCart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Intent intent = new Intent(this, SettingsFragment.class);
-                // startActivity(intent);
-                // once this button is clicked we want to save our values in the database and send those values
-                // right away to summary activity where we display the order info
+                if(quantity==0) {
+                    quantity++;
+                    displayQuantity();
+                    double prodPrice = basePrice * quantity;
+                    prodPrice = basePrice;
+                    productprice.setText(prodPrice + "₪");
+                    SaveCart();
+                }else
+                    SaveCart();
 
-                SaveCart();
             }
         });
 
@@ -80,7 +88,9 @@ public class DetailedActivity extends AppCompatActivity {
                     quantity++;
                     displayQuantity();
                     double prodPrice = basePrice * quantity;
-                    productprice.setText("₪ " + prodPrice);
+                    if(quantity==0)
+                        prodPrice = basePrice;
+                    productprice.setText(prodPrice +"₪" );
                 }
 
             }
@@ -97,7 +107,9 @@ public class DetailedActivity extends AppCompatActivity {
                     quantity--;
                     displayQuantity();
                     double prodPrice = basePrice * quantity;
-                    productprice.setText("₪ " + prodPrice);
+                    if(quantity==0)
+                        prodPrice = basePrice;
+                    productprice.setText(prodPrice +"₪" );
                 }
             }
         });
@@ -107,12 +119,14 @@ public class DetailedActivity extends AppCompatActivity {
 
         dbHelper.OpenReadAble();
         Product p=new Product();
-        Cursor c = p.SelectById(dbHelper.getDb(),selectedid);
+        Cursor c = p.SelectById(dbHelper.getDb(),Integer.parseInt(selectedid));
         if(c!=null){
             c.moveToFirst();
             producttype.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_TYPE)));
             description.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_DESCRIPTION)));
-            basePrice=c.getDouble(c.getColumnIndexOrThrow(COLUMN_PRODUCT_BUYPRICE));
+            productprice.setText(c.getDouble(c.getColumnIndexOrThrow(COLUMN_PRODUCT_SALEPRICE))+"₪");
+            basePrice=c.getDouble(c.getColumnIndexOrThrow(COLUMN_PRODUCT_SALEPRICE));
+            karat.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_PRODUCT_KARAT))+"K");
             stock = c.getInt(c.getColumnIndexOrThrow(COLUMN_PRODUCT_STOCK));
             byte[] image = c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE));
             Bitmap bm = BitmapFactory.decodeByteArray(image, 0 ,image.length);

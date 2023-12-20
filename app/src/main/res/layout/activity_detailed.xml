@@ -26,15 +26,17 @@
             android:layout_width="wrap_content"
             android:scaleType="centerCrop"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/mylogo" />
+            android:background="@drawable/mylogo" />
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/detailActivityJewelryTypeTv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="55dp"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="44dp"
+        android:gravity="center"
+        android:textAlignment="center"
         android:text="JewelryType"
         android:textColor="@color/black"
         android:textSize="22sp"
@@ -43,14 +45,64 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
-        android:id="@+id/detailActivityJewelryYOPTv"
+        android:id="@+id/detailActivityQuantity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:text="JewelryYOP"
+        android:layout_marginTop="65dp"
+        android:text="Quantity:"
+        android:textColor="@color/black"
         android:textSize="22sp"
         android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detailActivityJewelryTypeTv" />
+
+
+    <ImageButton
+        android:id="@+id/addquantity"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/detailActivityQuantity"
+        app:layout_constraintTop_toTopOf="@+id/detailActivityQuantity"
+        app:srcCompat="@drawable/addcircle" />
+
+
+    <TextView
+        android:id="@+id/quantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_toRightOf="@+id/addquantity"
+        android:text="0"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/addquantity"
+        app:layout_constraintTop_toTopOf="@+id/addquantity" />
+
+    <ImageButton
+        android:id="@+id/subquantity"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_toRightOf="@+id/quantity"
+        android:background="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/quantity"
+        app:layout_constraintTop_toTopOf="@+id/quantity"
+        app:srcCompat="@drawable/remove" />
+
+    <TextView
+        android:id="@+id/detailActivityJewelryPriceTv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="16dp"
+        android:text="Price"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailActivityJewelryTypeTv" />
 
@@ -58,14 +110,15 @@
         android:id="@+id/descriptionTV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:paddingStart="16dp"
+        android:layout_marginTop="70dp"
+        android:paddingStart="20dp"
         android:paddingEnd="16dp"
         android:text="descreption"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailActivityJewelryYOPTv" />
+        app:layout_constraintTop_toBottomOf="@+id/detailActivityJewelryPriceTv" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/detailActivityAddToCartBtn"
@@ -80,18 +133,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/detailActivityJewelryPriceTv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:text="Price"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/detailActivityJewelryYOPTv"
-        app:layout_constraintTop_toTopOf="@+id/detailActivityJewelryYOPTv" />
     <TextView
         android:id="@+id/detailActivityJewelryKaratTv"
         android:layout_width="wrap_content"

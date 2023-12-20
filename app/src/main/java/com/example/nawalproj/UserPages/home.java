@@ -93,6 +93,10 @@ public class home extends Fragment implements View.OnClickListener {
             i.putExtra("Category","LastPieces");
             startActivity(i);
         }
+        /*if(v.getId() ==  R.id.auctionImage){
+            Intent i = new Intent(getContext(), ProductAuctionView.class);
+            startActivity(i);
+        }*/
 
     }
 }

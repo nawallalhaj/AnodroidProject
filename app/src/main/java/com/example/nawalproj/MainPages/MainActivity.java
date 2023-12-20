@@ -16,22 +16,15 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nawalproj.Admin.AddProductActivity;
 import com.example.nawalproj.Admin.ShowProduct;
-import com.example.nawalproj.DataBase.DBHelper;
 import com.example.nawalproj.R;
-import com.example.nawalproj.UserPages.cart;
+import com.example.nawalproj.UserPages.CartFragment;
 import com.example.nawalproj.UserPages.home;
 import com.example.nawalproj.UserPages.info;
 import com.example.nawalproj.UserPages.product;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import static com.example.nawalproj.DataBase.QueryString.SQL_CREATE_CART;
-import static com.example.nawalproj.DataBase.QueryString.SQL_CREATE_FAVORITE;
-import static com.example.nawalproj.DataBase.QueryString.SQL_DELETE_CART;
-import static com.example.nawalproj.DataBase.QueryString.SQL_DELETE_FAVORITE;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -65,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 Intent i = new Intent(MainActivity.this, ShowProduct.class);
                 startActivity(i);
             }
+            // Auction
+            /*if (user != null) {
+                if(user.getDisplayName().startsWith("bidder:")){
+                    Intent i = new Intent(MainActivity.this, ShowProduct.class);
+                    startActivity(i);
+                }*/
             // User is signed in
             View header = navigationView.getHeaderView(0);
             username = header.findViewById(R.id.tvUsername);
@@ -98,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         }
         else if(R.id.nav_cart==item.getItemId()){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new cart()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CartFragment()).commit();
         }
         else if(R.id.nav_info==item.getItemId()){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new info()).commit();
