@@ -4,7 +4,6 @@ import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.CO
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE;
-import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_YOP;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.TABLE_AUCTIONPRODUCT;
 
 import android.content.ContentValues;
@@ -95,7 +94,6 @@ public class AuctionBidders {
         String[] projection = {
                 BaseColumns._ID,
                 COLUMN_AUCTIONPRODUCT_TYPE,
-                COLUMN_AUCTIONPRODUCT_YOP,
                 COLUMN_AUCTIONPRODUCT_DESCRIPTION,
                 COLUMN_AUCTIONPRODUCT_IMAGE,
                 COLUMN_AUCTIONPRODUCT_MINPRICE,

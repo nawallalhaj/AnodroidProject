@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/backg3"
-    tools:context=".Auction.AdminBidder.AddAuctionProductActivity">
+    tools:context=".Admin.AddAuctionProductActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -100,6 +100,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etAuctionprodDisc" />
 
+                <EditText
+                    android:id="@+id/etAuctionTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="AuctionTimeInHours"
+                    android:padding="8dp"
+                    android:textColor="@color/black"
+                    android:textColorHighlight="@color/cardview_dark_background"
+                    android:inputType="numberDecimal"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
                 <Button
                     android:id="@+id/addToAuctionButton"
                     android:layout_width="match_parent"
@@ -114,18 +129,6 @@
                     app:layout_constraintHorizontal_bias="0.498"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/etAuctionMinPrice" />
-
-                <Button
-                    android:id="@+id/btAuctionDelete"
-                    android:layout_width="110dp"
-                    android:layout_height="48dp"
-                    android:layout_marginTop="15dp"
-                    android:backgroundTint="@color/pink"
-                    android:text="delete"
-                    android:textColor="@color/black"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/etkarat" />
 
                 <ProgressBar
                     android:id="@+id/addItemProgressBar"

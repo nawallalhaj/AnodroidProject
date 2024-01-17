@@ -1,49 +1,44 @@
-package com.example.nawalproj.Auction;
+package com.example.nawalproj.Classes;
 
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE;
+import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_TIME;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE;
-import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_YOP;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.TABLE_AUCTIONPRODUCT;
+import static com.example.nawalproj.DataBase.TablesString.ProductTable.TABLE_PRODUCT;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.provider.BaseColumns;
-
-import com.example.nawalproj.Classes.SqlInterface;
+import android.util.Log;
 
 public class AuctionProduct implements SqlInterface {
-    protected int pid;
+    protected int aid;
     protected String prodType;
-    protected int prodYOP;//year of production
     protected byte[] prodimg;
     protected double minprice;
+    protected int time;
     protected String prodDisc;
 
-    public AuctionProduct(String prodType, int prodYOP, byte[] prodimg, double minprice) {
+    public AuctionProduct(String prodType, int time, byte[] prodimg, double minprice, String prodDisc) {
         this.prodType=prodType;
-        this.prodYOP=prodYOP;
+        this.time=time;
         this.prodimg=prodimg;
-        this.minprice=minprice;
-    }
-    public AuctionProduct(int pid,String prodType, int prodYOP, byte[] prodimg, double minprice) {
-        this.pid = pid;
-        this.prodType=prodType;
-        this.prodYOP=prodYOP;
-        this.prodimg=prodimg;
-        this.minprice=minprice;
-    }
-    public AuctionProduct(String prodType, double minprice, String prodDisc) {
-        this.prodType=prodType;
         this.minprice=minprice;
         this.prodDisc=prodDisc;
     }
+    public AuctionProduct(int aid,String prodType, byte[] prodimg, double minprice) {
+        this.aid = aid;
+        this.prodType=prodType;
+        this.prodimg=prodimg;
+        this.minprice=minprice;
+    }
     public AuctionProduct(AuctionProduct p) {
-        pid = p.getPid();
+        aid = p.getAid();
         prodType = p.getProdType();
-        prodYOP = p.getProdYOP();
+        time = p.getTime();
         prodDisc = p.getProdDisc();
         minprice = p.getMinprice();
         prodimg = p.getProdimg();
@@ -53,13 +48,6 @@ public class AuctionProduct implements SqlInterface {
     public AuctionProduct() {
     }
 
-    public int getPid() {
-        return pid;
-    }
-
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
 
     public String getProdType() {
         return prodType;
@@ -67,14 +55,6 @@ public class AuctionProduct implements SqlInterface {
 
     public void setProdType(String prodType) {
         this.prodType = prodType;
-    }
-
-    public int getProdYOP() {
-        return prodYOP;
-    }
-
-    public void setProdYOP(int prodYOP) {
-        this.prodYOP = prodYOP;
     }
 
     public double getMinprice() {
@@ -107,7 +87,7 @@ public class AuctionProduct implements SqlInterface {
         // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
         values.put(COLUMN_AUCTIONPRODUCT_TYPE, prodType);
-        values.put(COLUMN_AUCTIONPRODUCT_YOP,prodYOP);
+        values.put(COLUMN_AUCTIONPRODUCT_TIME,time);
         values.put(COLUMN_AUCTIONPRODUCT_DESCRIPTION, prodDisc);
         values.put(COLUMN_AUCTIONPRODUCT_MINPRICE, minprice);
         values.put(COLUMN_AUCTIONPRODUCT_IMAGE, prodimg);
@@ -131,7 +111,16 @@ public class AuctionProduct implements SqlInterface {
 
     @Override
     public int Update(SQLiteDatabase db, int id) {
-        return 0;
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_AUCTIONPRODUCT_MINPRICE, minprice);
+        String selection = BaseColumns._ID + " LIKE ?";
+        String[] selectionArgs = {id+""};
+
+        return  db.update(
+                TABLE_AUCTIONPRODUCT,
+                values,
+                selection,
+                selectionArgs);
     }
 
     @Override
@@ -139,7 +128,7 @@ public class AuctionProduct implements SqlInterface {
         String[] projection = {
                 BaseColumns._ID,
                 COLUMN_AUCTIONPRODUCT_TYPE,
-                COLUMN_AUCTIONPRODUCT_YOP,
+                COLUMN_AUCTIONPRODUCT_TIME,
                 COLUMN_AUCTIONPRODUCT_DESCRIPTION,
                 COLUMN_AUCTIONPRODUCT_IMAGE,
                 COLUMN_AUCTIONPRODUCT_MINPRICE,
@@ -161,7 +150,7 @@ public class AuctionProduct implements SqlInterface {
         String[] projection = {
                 BaseColumns._ID,
                 COLUMN_AUCTIONPRODUCT_TYPE,
-                COLUMN_AUCTIONPRODUCT_YOP,
+                COLUMN_AUCTIONPRODUCT_TIME,
                 COLUMN_AUCTIONPRODUCT_DESCRIPTION,
                 COLUMN_AUCTIONPRODUCT_IMAGE,
                 COLUMN_AUCTIONPRODUCT_MINPRICE,
@@ -184,4 +173,19 @@ public class AuctionProduct implements SqlInterface {
         return prodType;
     }
 
+    public int getAid() {
+        return aid;
+    }
+
+    public void setAid(int aid) {
+        this.aid = aid;
+    }
+
+    public int getTime() {
+        return time;
+    }
+
+    public void setTime(int time) {
+        this.time = time;
+    }
 }

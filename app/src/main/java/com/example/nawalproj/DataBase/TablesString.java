@@ -25,7 +25,7 @@ public class TablesString {
     public static class AuctionProductTable implements BaseColumns {
         public static final String TABLE_AUCTIONPRODUCT = "AuctionProduct";
         public static final String COLUMN_AUCTIONPRODUCT_TYPE = "ProductType";
-        public static final String COLUMN_AUCTIONPRODUCT_YOP = "YearOfProduction";
+        public static final String COLUMN_AUCTIONPRODUCT_TIME = "time";
         public static final String COLUMN_AUCTIONPRODUCT_DESCRIPTION = "Description";
         public static final String COLUMN_AUCTIONPRODUCT_IMAGE = "ProductImage";
         public static final String COLUMN_AUCTIONPRODUCT_MINPRICE = "MinPrice";

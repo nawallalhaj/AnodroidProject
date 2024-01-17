@@ -78,7 +78,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             byte[] images = c.getBlob(c.getColumnIndexOrThrow(COLUMN_PRODUCT_IMAGE));
             Bitmap bm = BitmapFactory.decodeByteArray(images, 0 ,images.length);
             sum+=price*amount;
-            holder.totalprice.setText(sum + "$");
+            holder.totalprice.setText(sum + "₪");
             holder.tvTypeOfProduct.setText(typeOfProduct);
             holder.tvJewelryPrice.setText(price+"");
             holder.tvJewelryYOP.setText(yop+"");
@@ -132,7 +132,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     if(i>1){
                        tvAmount.setText(String.valueOf(--i));
                        sum-=Double.parseDouble(tvJewelryPrice.getText().toString());
-                       totalprice.setText(sum + "$");
+                       totalprice.setText(sum + "₪");
                     }
                 }
             });
@@ -143,7 +143,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     if(i<max){
                         tvAmount.setText(String.valueOf(++i));
                         sum+=Double.parseDouble(tvJewelryPrice.getText().toString());
-                        totalprice.setText(sum + "$");
+                        totalprice.setText(sum + "₪");
                     }
                 }
             });

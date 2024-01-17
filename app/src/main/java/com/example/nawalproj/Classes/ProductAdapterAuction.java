@@ -1,9 +1,10 @@
-package com.example.nawalproj.Auction.AuctionAdapters;
+package com.example.nawalproj.Classes;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,9 +13,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.nawalproj.Auction.AuctionProduct;
-import com.example.nawalproj.Auction.UserBidder.PlaceBidActivity;
-import com.example.nawalproj.Classes.ProductAdapter;
+import com.example.nawalproj.UserPages.PlaceBidActivity;
 import com.example.nawalproj.R;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -22,7 +21,7 @@ import java.util.List;
 
 public class ProductAdapterAuction extends RecyclerView.Adapter<ProductAdapterAuction.ViewHolder> {
     List<AuctionProduct> productList;
-    int pid;
+    int aid;
     String uid;
     View view;
     Context context;
@@ -30,6 +29,7 @@ public class ProductAdapterAuction extends RecyclerView.Adapter<ProductAdapterAu
     public ProductAdapterAuction(Context context, List<AuctionProduct> productList) {
         this.context = context;
         this.productList = productList;
+        Log.d("list size",""+productList.size());
     }
 
     @Override
@@ -45,17 +45,14 @@ public class ProductAdapterAuction extends RecyclerView.Adapter<ProductAdapterAu
 
         // here we will find the position and start setting the output on our views
 
-
         String typeOfProduct = productList.get(position).getProdType();
-        int yop = productList.get(position).getProdYOP();
         double price = productList.get(position).getMinprice();
         byte[] images = productList.get(position).getProdimg();
         Bitmap bm = BitmapFactory.decodeByteArray(images, 0 ,images.length);
-        pid = productList.get(position).getPid();
+        aid = productList.get(position).getAid();
         uid = FirebaseAuth.getInstance().getUid();
         holder.tvTypeOfProduct.setText(typeOfProduct);
         holder.tvJewelryPrice.setText(price+"");
-        holder.tvJewelryYOP.setText(yop+"");
         holder.imageOfProduct.setImageBitmap(bm);
 
 
@@ -63,7 +60,7 @@ public class ProductAdapterAuction extends RecyclerView.Adapter<ProductAdapterAu
 
     @Override
     public int getItemCount() {
-        return 0;
+        return productList.size();
     }
 
 
@@ -72,7 +69,7 @@ public class ProductAdapterAuction extends RecyclerView.Adapter<ProductAdapterAu
 
         // here we will find the views on which we will inflate our data
 
-        TextView tvTypeOfProduct, tvJewelryPrice, tvJewelryYOP;
+        TextView tvTypeOfProduct, tvJewelryPrice;
         ImageView imageOfProduct;
 
         public ViewHolder(View itemView) {
@@ -80,7 +77,6 @@ public class ProductAdapterAuction extends RecyclerView.Adapter<ProductAdapterAu
 
             tvTypeOfProduct = itemView.findViewById(R.id.eachAuctionItemName);
             tvJewelryPrice = itemView.findViewById(R.id.eachAuctionItemPriceTv);
-            tvJewelryYOP = itemView.findViewById(R.id.eachAuctionYOPItemTv);
             imageOfProduct = itemView.findViewById(R.id.eachAuctionItemIV);
 
             itemView.setOnClickListener(this);
@@ -89,7 +85,7 @@ public class ProductAdapterAuction extends RecyclerView.Adapter<ProductAdapterAu
         @Override
         public void onClick(View v) {
             Intent intent = new Intent(v.getContext(), PlaceBidActivity.class);
-            intent.putExtra("id", productList.get(getLayoutPosition()).getPid() + "");
+            intent.putExtra("id", productList.get(getLayoutPosition()).getAid() + "");
             v.getContext().startActivity(intent);
         }
 

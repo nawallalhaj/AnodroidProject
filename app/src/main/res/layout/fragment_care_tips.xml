@@ -3,38 +3,46 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/backg3"
-    tools:context=".UserPages.InfoApp">
+    tools:context=".UserPages.CareTips">
 
     <TextView
-        android:id="@+id/welcome"
+        android:id="@+id/caretips"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/font1"
-        android:text="Welcome to GlamourGems - Your Premier Destination for Exquisite Jewelry!"
+        android:text="Taking good care of your gold jewelry ensures it maintains its luster and stays looking beautiful for years to come. Here are some care tips:"
         android:textColor="@color/pinkshade3"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
     <TextView
         android:id="@+id/why"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="90dp"
+        android:layout_marginTop="120dp"
         android:fontFamily="@font/font1"
-        android:text="Why GlamourGems?"
+        android:text="1. Avoid Chemicals:"
         android:textColor="@color/pinkshade2"
         android:textSize="16sp" />
     <TextView
-        android:id="@+id/whyexp"
+        android:id="@+id/tip1"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="110dp"
+        android:layout_marginTop="140dp"
         android:fontFamily="@font/font1"
-        android:text="At GlamourGems, we understand that jewelry is not just an accessory; it's an expression of your unique style and personality. Our app is designed to bring you a seamless and delightful shopping experience, ensuring you find the perfect piece to complement your individuality."
+        android:text="- Remove your gold jewelry before swimming in pools or hot tubs, as exposure to chlorine can cause damage."        android:textColor="@color/pinkshade3"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/tip2"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="190dp"
+        android:fontFamily="@font/font1"
+        android:text="- Avoid contact with household cleaning agents and harsh chemicals. Remove jewelry before cleaning to prevent chemical reactions."
         android:textColor="@color/pinkshade3"
         android:textSize="16sp" />
     <TextView
@@ -42,9 +50,9 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="250dp"
         android:fontFamily="@font/font1"
-        android:text="Explore Our Dazzling Collection:"
+        android:text="2. Store Separately:"
         android:textColor="@color/pinkshade2"
         android:textSize="16sp" />
     <TextView
@@ -52,9 +60,9 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginTop="270dp"
         android:fontFamily="@font/font1"
-        android:text="Browse through our extensive collection of handpicked jewelry, ranging from timeless classics to trendy and unique pieces. We curate our selection with a keen eye for quality, craftsmanship, and the latest fashion trends to cater to every style and occasion."
+        android:text="- Store your gold pieces separately to prevent scratching. Consider using individual jewelry pouches or a lined jewelry box."
         android:textColor="@color/pinkshade3"
         android:textSize="16sp" />
     <TextView
@@ -62,19 +70,29 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="350dp"
+        android:layout_marginTop="330dp"
         android:fontFamily="@font/font1"
-        android:text="Easy and Secure Transactions:"
+        android:text="3. Gentle Cleaning:"
         android:textColor="@color/pinkshade2"
         android:textSize="16sp" />
     <TextView
-        android:id="@+id/easyandSecureTransactionsexp"
+        android:id="@+id/tip6"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="370dp"
+        android:layout_marginTop="350dp"
         android:fontFamily="@font/font1"
-        android:text="We offer a variety of secure payment options, ensuring a hassle-free checkout process. Your financial information is handled with the utmost care."
+        android:text="- Clean your gold jewelry regularly to maintain its shine. Use a soft cloth to gently wipe away any dirt or oils."
+        android:textColor="@color/pinkshade3"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/tip7"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="400dp"
+        android:fontFamily="@font/font1"
+        android:text="- For a deeper clean, mix a small amount of mild dish soap with warm water. Soak the jewelry for a few minutes, then gently scrub with a soft brush or toothbrush. Rinse and pat dry."
         android:textColor="@color/pinkshade3"
         android:textSize="16sp" />
     <TextView
@@ -82,9 +100,9 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="450dp"
+        android:layout_marginTop="475dp"
         android:fontFamily="@font/font1"
-        android:text="Download GlamourGems Today:"
+        android:text="4. Remove Before Activities:"
         android:textColor="@color/pinkshade2"
         android:textSize="16sp" />
     <TextView
@@ -92,24 +110,21 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="470dp"
+        android:layout_marginTop="495dp"
         android:fontFamily="@font/font1"
-        android:text="Embark on a journey of elegance and style with [Your App Name]. Download our app today to discover a world of exquisite jewelry at your fingertips.
-Thank you for choosing GlamourGems - Where Every Piece Tells a Story."
+        android:text="- Take off your gold jewelry before engaging in activities that may subject it to excessive pressure, such as sports or heavy lifting."
+        android:textColor="@color/pinkshade3"
+        android:textSize="16sp" />
+    <TextView
+        android:id="@+id/ins"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="560dp"
+        android:fontFamily="@font/font1"
+        android:text="By following these care tips, you can ensure that your gold jewelry remains radiant and maintains its value over time."
         android:textColor="@color/pinkshade3"
         android:textSize="16sp" />
 
-    <TextView
-        android:id="@+id/happy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="580dp"
-        android:fontFamily="@font/font1"
-        android:text="HappyShopping :)"
-        android:textColor="@color/pinkshade2"
-        android:textSize="25sp" />
-
 
 </FrameLayout>
-

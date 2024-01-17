@@ -16,15 +16,21 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.nawalproj.Admin.AddAuctionProductActivity;
 import com.example.nawalproj.Admin.ShowProduct;
+import com.example.nawalproj.DataBase.DBHelper;
 import com.example.nawalproj.R;
+import com.example.nawalproj.UserPages.CareTips;
 import com.example.nawalproj.UserPages.CartFragment;
-import com.example.nawalproj.UserPages.home;
-import com.example.nawalproj.UserPages.info;
-import com.example.nawalproj.UserPages.product;
+import com.example.nawalproj.UserPages.ContactUs;
+import com.example.nawalproj.UserPages.HomeFragment;
+import com.example.nawalproj.UserPages.InfoApp;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import static com.example.nawalproj.DataBase.QueryString.SQL_CREATE_AUCTIONPRODUCT;
+import static com.example.nawalproj.DataBase.QueryString.SQL_DELETE_AUCTIONPRODUCT;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -39,12 +45,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        /*DBHelper dbHelper = new DBHelper(this);
+       /* DBHelper dbHelper = new DBHelper(this);
         dbHelper.OpenWriteAble();
-        dbHelper.getDb().execSQL(SQL_DELETE_FAVORITE);
-        dbHelper.getDb().execSQL(SQL_CREATE_FAVORITE);
-        dbHelper.getDb().execSQL(SQL_DELETE_CART);
-        dbHelper.getDb().execSQL(SQL_CREATE_CART);
+        dbHelper.getDb().execSQL(SQL_DELETE_AUCTIONPRODUCT);
+        dbHelper.getDb().execSQL(SQL_CREATE_AUCTIONPRODUCT);
         dbHelper.Close();*/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -59,11 +63,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(i);
             }
             // Auction
-            /*if (user != null) {
-                if(user.getDisplayName().startsWith("bidder:")){
-                    Intent i = new Intent(MainActivity.this, ShowProduct.class);
+            else if(user.getDisplayName().startsWith("bidder:")){
+                    Intent i = new Intent(MainActivity.this, AddAuctionProductActivity.class);
                     startActivity(i);
-                }*/
+                }
             // User is signed in
             View header = navigationView.getHeaderView(0);
             username = header.findViewById(R.id.tvUsername);
@@ -85,7 +88,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle.syncState();
 
         if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new home()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_home);
         }
     }
@@ -93,17 +96,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         if(R.id.nav_home==item.getItemId()){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new home()).commit();
-
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new HomeFragment()).commit();
         }
         else if(R.id.nav_cart==item.getItemId()){
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CartFragment()).commit();
         }
         else if(R.id.nav_info==item.getItemId()){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new info()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new InfoApp()).commit();
         }
-        else if(R.id.nav_product==item.getItemId()){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new product()).commit();
+        else if(R.id.nav_contactus==item.getItemId()){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new ContactUs()).commit();
+        }
+        else if(R.id.nav_tips==item.getItemId()){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, new CareTips()).commit();
         }
         else if(R.id.nav_logout==item.getItemId()){
             fauth.signOut();

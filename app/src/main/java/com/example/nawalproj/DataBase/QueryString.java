@@ -1,6 +1,4 @@
 package com.example.nawalproj.DataBase;
-import com.example.nawalproj.Classes.AuctionParticipants;
-import com.example.nawalproj.Classes.Favorite;
 import com.example.nawalproj.DataBase.TablesString.*;
 public class QueryString {
 
@@ -21,7 +19,7 @@ public class QueryString {
             "CREATE TABLE " + AuctionProductTable.TABLE_AUCTIONPRODUCT + " (" +
                     AuctionProductTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE + " TEXT," +
-                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_YOP + " INTEGER," +
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_TIME + " INTEGER," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION + " TEXT," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE + " DOUBLE,"+
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE + " BLOB);";
@@ -73,6 +71,8 @@ public class QueryString {
 
     public static final String SQL_DELETE_PRODUCT =
             "DROP TABLE IF EXISTS " + ProductTable.TABLE_PRODUCT;
+    public static final String SQL_DELETE_AUCTIONPRODUCT =
+            "DROP TABLE IF EXISTS " + AuctionProductTable.TABLE_AUCTIONPRODUCT;
 
     public static final String SQL_DELETE_CART =
             "DROP TABLE IF EXISTS " + CartTable.TABLE_CART;

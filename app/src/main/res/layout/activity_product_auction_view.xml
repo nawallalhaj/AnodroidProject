@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backg3"
     android:id="@+id/coordinatorLayout"
-    tools:context=".Auction.UserBidder.ProductAuctionView">
+    tools:context=".UserPages.ProductAuctionView">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"

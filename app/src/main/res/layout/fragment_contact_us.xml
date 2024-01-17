@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backg3"
+    tools:context=".UserPages.ContactUs">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+        android:id="@+id/contactus"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="@font/font1"
+        android:text="Contact Us"
+        android:textColor="@color/pinkshade3"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/caret"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="@font/font1"
+        android:text="- We value your feedback and are here to assist you. Please feel free to reach out to us through the following channels:"
+        android:textColor="@color/pinkshade3"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/customoer"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="120dp"
+        android:fontFamily="@font/font1"
+        android:text="Customer Support:"
+        android:textColor="@color/pinkshade3"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/careti"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="140dp"
+        android:fontFamily="@font/font1"
+        android:text=" For any inquiries, assistance, or feedback, our dedicated customer support team is ready to help."
+        android:textColor="@color/pinkshade3"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/emaill"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="200dp"
+        android:fontFamily="@font/font1"
+        android:text="- Email: Send us an email at glamourGems@email.com. We aim to respond within 24 hours."
+        android:textColor="@color/pinkshade3"
+        android:textSize="18sp" />
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="380dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="270dp"
+        android:fontFamily="@font/font1"
+        android:text="-Helpline: Call our customer support helpline at +972 0529685410. Our team is available everyday 10am-6pm."
+        android:textColor="@color/pinkshade3"
+        android:textSize="18sp" />
+
+
+
+</FrameLayout>

@@ -22,4 +22,6 @@
     <color name="textColor">#FFFFFFFF</color>
     <color name="textColor2">#ef0148</color>
     <color name="background">#FF000000</color>
+    <color name="pinkshade3">#A94064</color>
+
 </resources>

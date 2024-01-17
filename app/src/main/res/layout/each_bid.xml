@@ -35,27 +35,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/eachAuctionYOPItemTv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginStart="16dp"
-            android:text="Year of production"
-            android:textSize="15sp"
-            app:layout_constraintStart_toEndOf="@+id/eachAuctionItemIV"
-            app:layout_constraintTop_toBottomOf="@+id/eachAuctionItemName" />
-
-        <TextView
             android:id="@+id/eachAuctionItemPriceTv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
             android:text="Price"
             android:textColor="@color/black"
             android:textSize="16sp"
             app:layout_constraintStart_toEndOf="@+id/eachAuctionItemIV"
-            app:layout_constraintTop_toBottomOf="@+id/eachAuctionYOPItemTv" />
+            tools:layout_editor_absoluteY="70dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

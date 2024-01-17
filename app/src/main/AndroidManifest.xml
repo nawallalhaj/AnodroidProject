@@ -15,37 +15,16 @@
         android:theme="@style/Theme.NawalProj"
         tools:targetApi="31">
         <activity
-            android:name=".Auction.UserBidder.ProductAuctionView"
+            android:name=".UserPages.ProductAuctionView"
             android:exported="false" />
         <activity
-            android:name=".Auction.AdminBidder.ShowAllAuctionProducts"
+            android:name=".Admin.AddAuctionProductActivity"
             android:exported="false" />
         <activity
-            android:name=".Auction.AdminBidder.AddAuctionProductActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Auction.AdminBidder.WinnerList"
-            android:exported="false" />
-        <activity
-            android:name=".Auction.ShowAllBids"
-            android:exported="false" />
-        <activity
-            android:name=".Auction.AdminBidder.ShowAllBidders"
-            android:exported="false" />
-        <activity
-            android:name=".Auction.UserBidder.PlaceBidActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Auction.MyProducts"
-            android:exported="false" />
-        <activity
-            android:name=".Auction.AuctionList"
+            android:name=".UserPages.PlaceBidActivity"
             android:exported="false" />
         <activity
             android:name=".UserPages.DetailedActivity"
-            android:exported="false" />
-        <activity
-            android:name=".UserPages.ProductInfo"
             android:exported="false" />
         <activity
             android:name=".UserPages.ProductView"
