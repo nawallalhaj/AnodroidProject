@@ -19,17 +19,9 @@ public class QueryString {
             "CREATE TABLE " + AuctionProductTable.TABLE_AUCTIONPRODUCT + " (" +
                     AuctionProductTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE + " TEXT," +
-                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_TIME + " INTEGER," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION + " TEXT," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE + " DOUBLE,"+
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE + " BLOB);";
-    public static final String SQL_CREATE_AUCTIONBIDDER =
-            "CREATE TABLE " + AuctionBiddersTable.TABLE_AUCTIONBIDDER + " (" +
-                    AuctionBiddersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    AuctionBiddersTable.COLUMN_AUCTIONBIDDER_NAME+ " TEXT," +
-                    AuctionBiddersTable.COLUMN_AUCTIONBIDDERPRODUCT_TYPE + " TEXT," +
-                    AuctionBiddersTable.COLUMN_AUCTIONBIDDER_PRICE+ " DOUBLE,"+
-                    AuctionBiddersTable.COLUMN_AUCTIONBIDDERPRODUCT_IMAGE+ " BLOB);";
 
 
     public static final String SQL_CREATE_CART =
@@ -49,19 +41,6 @@ public class QueryString {
                     SaleTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                     SaleTable.COLUMN_SALE_PROD_ID + " INTEGER," +
                     SaleTable.COLUMN_SALE_USER_ID + " TEXT);";
-    public static final String SQL_CREATE_AUCTION =
-            "CREATE TABLE " + AuctionTable.TABLE_AUCTION + " (" +
-                    AuctionTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    AuctionTable.COLUMN_AUCTION_PROD_ID + " INTEGER," +
-                    AuctionTable.COLUMN_AUCTION_MINIMALPRICE + " DOUBLE," +
-                    AuctionTable.COLUMN_AUCTION_STARTINGHOUR + " TIME," +
-                    AuctionTable.COLUMN_AUCTION_STARTINGDAY + " DATE," +
-                    AuctionTable.COLUMN_AUCTION_RUNNIGTIME + " TIME);";
-    public static final String SQL_CREATE_AUCTIONP =
-            "CREATE TABLE " + AuctionParticipantsTable.TABLE_AUCTIONP + " (" +
-                    AuctionParticipantsTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                    AuctionParticipantsTable.COLUMN_AUCTIONP_PAIDPRICE + " DOUBLE," +
-                    AuctionParticipantsTable.COLUMN_AUCTIONP_USER_ID + " TEXT);";
 
 
 

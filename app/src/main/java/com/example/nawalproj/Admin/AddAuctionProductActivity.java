@@ -3,7 +3,6 @@ package com.example.nawalproj.Admin;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE;
-import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_TIME;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -32,7 +31,7 @@ import java.io.IOException;
 public class AddAuctionProductActivity extends AppCompatActivity implements View.OnClickListener {
 
     private static int RESULT_LOAD_IMAGE = 1;
-    EditText etType,etdisc,etminprice,etauctiontime;
+    EditText etType,etdisc,etminprice;
     ImageButton imageButton;
     Button btauctionadd;
     AuctionProduct p;
@@ -48,7 +47,6 @@ public class AddAuctionProductActivity extends AppCompatActivity implements View
         etType = findViewById(R.id.etAuctionprodType);
         etdisc = findViewById(R.id.etAuctionprodDisc);
         etminprice = findViewById(R.id.etAuctionMinPrice);
-        etauctiontime = findViewById(R.id.etAuctionTime);
         imageButton = findViewById(R.id.auctionprodimg);
         btauctionadd = findViewById(R.id.addToAuctionButton);
         btauctionadd.setOnClickListener(this);
@@ -63,8 +61,7 @@ public class AddAuctionProductActivity extends AppCompatActivity implements View
             dbHelper.OpenWriteAble();
 
             byte[] data  = imageViewToByte();
-            p=new AuctionProduct(etType.getText().toString(),
-                    Integer.parseInt(etauctiontime.getText().toString()), data,
+            p=new AuctionProduct(etType.getText().toString(), data,
                     Double.parseDouble(etminprice.getText().toString()),
                     etdisc.getText().toString());
             dbHelper.OpenWriteAble();

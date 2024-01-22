@@ -25,20 +25,9 @@ public class TablesString {
     public static class AuctionProductTable implements BaseColumns {
         public static final String TABLE_AUCTIONPRODUCT = "AuctionProduct";
         public static final String COLUMN_AUCTIONPRODUCT_TYPE = "ProductType";
-        public static final String COLUMN_AUCTIONPRODUCT_TIME = "time";
         public static final String COLUMN_AUCTIONPRODUCT_DESCRIPTION = "Description";
         public static final String COLUMN_AUCTIONPRODUCT_IMAGE = "ProductImage";
         public static final String COLUMN_AUCTIONPRODUCT_MINPRICE = "MinPrice";
-    }
-    //endregion
-    //region Auction Bidders Table
-    public static class AuctionBiddersTable implements BaseColumns {
-        public static final String TABLE_AUCTIONBIDDER = "AuctionBidder";
-        public static final String COLUMN_AUCTIONBIDDER_NAME = "BidderName";
-
-        public static final String COLUMN_AUCTIONBIDDERPRODUCT_TYPE = "AuctionProductType";
-        public static final String COLUMN_AUCTIONBIDDERPRODUCT_IMAGE = "AuctionProductImage";
-        public static final String COLUMN_AUCTIONBIDDER_PRICE = "Price";
     }
     //endregion
 
@@ -68,22 +57,5 @@ public class TablesString {
 
     }
 
-    public static class AuctionTable implements BaseColumns{
-        public static final String TABLE_AUCTION = "AUCTION";
-        public static final String COLUMN_AUCTION_PROD_ID = "PID";
-        public static final String COLUMN_AUCTION_MINIMALPRICE = "MINIMALPRICE";
-        public static final String COLUMN_AUCTION_RUNNIGTIME = "RUNNINGTIME";
-        public static final String COLUMN_AUCTION_STARTINGHOUR = "STARTINGHOUR";
-        public static final String COLUMN_AUCTION_STARTINGDAY = "STARTINGDAY";
-
-    }
-    public static class AuctionParticipantsTable implements BaseColumns{
-        public static final String TABLE_AUCTIONP = "AUCTIONPARTICIPANTS";
-        public static final String COLUMN_AUCTIONP_USER_ID = "UID";
-        public static final String COLUMN_AUCTIONP_PAIDPRICE = "PAIDPRICE";
-
-
-    }
-    //endregion
 }
 
