@@ -218,21 +218,22 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/trendyName"
-                    android:text="Trendy"
+                    android:id="@+id/auctionName"
+                    android:text="Auction"
                     android:textSize="20sp"
                     android:textColor="@color/pink"
                     android:fontFamily="@font/font1"
                     android:layout_marginTop="10dp"
                     android:layout_centerHorizontal="true"
-                    android:layout_below="@+id/fireImage"/>
+                    android:layout_below="@+id/auctionImage"/>
+
                 <ImageView
+                    android:id="@+id/auctionImage"
                     android:layout_width="70dp"
                     android:layout_height="70dp"
-                    android:id="@+id/fireImage"
-                    android:src="@drawable/fire"
+                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="15dp"
-                    android:layout_centerHorizontal="true"/>
+                    android:src="@drawable/auction" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView
@@ -263,52 +264,6 @@
                     android:src="@drawable/ordernow"
                     android:layout_marginTop="15dp"
                     android:layout_centerHorizontal="true"/>
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="195dp"
-        android:layout_height="175dp"
-        android:id="@+id/row4"
-        android:orientation="horizontal"
-        android:layout_marginTop="10dp"
-        android:padding="10dp"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/row3">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="200dp"
-            android:layout_height="match_parent"
-            android:layout_margin="10dp"
-            android:layout_weight="1"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="20dp">
-
-            <RelativeLayout
-                android:layout_width="152dp"
-                android:layout_height="127dp">
-
-                <ImageView
-                    android:id="@+id/auctionImage"
-                    android:layout_width="70dp"
-                    android:layout_height="70dp"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="15dp"
-                    android:src="@drawable/auction" />
-
-                <TextView
-                    android:id="@+id/auctionName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/auctionImage"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/font1"
-                    android:text="Auction"
-                    android:textColor="@color/pink"
-                    android:textSize="20sp" />
             </RelativeLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>

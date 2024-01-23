@@ -19,7 +19,7 @@ import com.example.nawalproj.R;
  */
 public class HomeFragment extends Fragment implements View.OnClickListener {
 
-    ImageView ringimage, braceletimage, earringimage, necklaceimage, trendeyimage, lastpiecesimage, auctionimage;
+    ImageView ringimage, braceletimage, earringimage, necklaceimage, lastpiecesimage, auctionimage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -33,8 +33,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
                earringimage.setOnClickListener(this);
                necklaceimage = v.findViewById(R.id.necklaceImage);
                necklaceimage.setOnClickListener(this);
-               trendeyimage = v.findViewById(R.id.fireImage);
-               trendeyimage.setOnClickListener(this);
                lastpiecesimage = v.findViewById(R.id.lastImage);
                lastpiecesimage.setOnClickListener(this);
                auctionimage = v.findViewById(R.id.auctionImage);
@@ -64,9 +62,6 @@ public class HomeFragment extends Fragment implements View.OnClickListener {
             Intent i = new Intent(getContext(), ProductView.class);
             i.putExtra("Category","Necklace");
             startActivity(i);
-        }
-        if(v.getId() ==  R.id.fireImage){
-
         }
         if(v.getId() ==  R.id.lastImage){
             Intent i = new Intent(getContext(), ProductView.class);
