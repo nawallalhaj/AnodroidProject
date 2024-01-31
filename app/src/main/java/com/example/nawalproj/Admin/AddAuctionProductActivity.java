@@ -59,11 +59,12 @@ public class AddAuctionProductActivity extends AppCompatActivity implements View
     public void onClick(View view) {
         if(view.getId()==R.id.addToAuctionButton){
             dbHelper.OpenWriteAble();
-
+            long starttime = System.currentTimeMillis();
+            long endtime = starttime + 600000;
             byte[] data  = imageViewToByte();
             p=new AuctionProduct(etType.getText().toString(), data,
                     Double.parseDouble(etminprice.getText().toString()),
-                    etdisc.getText().toString());
+                    etdisc.getText().toString(),starttime,endtime);
             dbHelper.OpenWriteAble();
             if(p.Add(dbHelper.getDb())>-1){
                 Toast.makeText(this, "Added Successfully", Toast.LENGTH_SHORT).show();

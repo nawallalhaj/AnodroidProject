@@ -28,6 +28,8 @@ public class TablesString {
         public static final String COLUMN_AUCTIONPRODUCT_DESCRIPTION = "Description";
         public static final String COLUMN_AUCTIONPRODUCT_IMAGE = "ProductImage";
         public static final String COLUMN_AUCTIONPRODUCT_MINPRICE = "MinPrice";
+        public static final String COLUMN_AUCTIONPRODUCT_STARTTIME = "StartTime";
+        public static final String COLUMN_AUCTIONPRODUCT_ENDTIME = "EndTime";
     }
     //endregion
 

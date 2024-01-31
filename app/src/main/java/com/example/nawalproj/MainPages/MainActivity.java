@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.nawalproj.Admin.AddAuctionProductActivity;
 import com.example.nawalproj.Admin.ShowProduct;
+import com.example.nawalproj.Classes.AuctionProduct;
 import com.example.nawalproj.DataBase.DBHelper;
 import com.example.nawalproj.R;
 import com.example.nawalproj.UserPages.CareTips;
@@ -30,7 +31,10 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import static com.example.nawalproj.DataBase.QueryString.SQL_CREATE_AUCTIONPRODUCT;
+import static com.example.nawalproj.DataBase.QueryString.SQL_CREATE_FAVORITE;
 import static com.example.nawalproj.DataBase.QueryString.SQL_DELETE_AUCTIONPRODUCT;
+import static com.example.nawalproj.DataBase.QueryString.SQL_DELETE_FAVORITE;
+import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.TABLE_AUCTIONPRODUCT;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -49,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         dbHelper.OpenWriteAble();
         dbHelper.getDb().execSQL(SQL_DELETE_AUCTIONPRODUCT);
         dbHelper.getDb().execSQL(SQL_CREATE_AUCTIONPRODUCT);
+        //dbHelper.getDb().execSQL("ALTER TABLE "+TABLE_AUCTIONPRODUCT+" ADD CurrentTime INTEGER;");
+       // new AuctionProduct().Delete(dbHelper.getDb(),1);
         dbHelper.Close();*/
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

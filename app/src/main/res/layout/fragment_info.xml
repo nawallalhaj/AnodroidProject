@@ -94,7 +94,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="470dp"
         android:fontFamily="@font/font1"
-        android:text="Embark on a journey of elegance and style with [Your App Name]. Download our app today to discover a world of exquisite jewelry at your fingertips.
+        android:text="Embark on a journey of elegance and style with GlamourGems. Download our app today to discover a world of exquisite jewelry at your fingertips.
 Thank you for choosing GlamourGems - Where Every Piece Tells a Story."
         android:textColor="@color/pinkshade3"
         android:textSize="16sp" />

@@ -21,6 +21,8 @@ public class QueryString {
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE + " TEXT," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION + " TEXT," +
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE + " DOUBLE,"+
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_STARTTIME + " INTEGER,"+
+                    AuctionProductTable.COLUMN_AUCTIONPRODUCT_ENDTIME + " INTEGER,"+
                     AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE + " BLOB);";
 
 

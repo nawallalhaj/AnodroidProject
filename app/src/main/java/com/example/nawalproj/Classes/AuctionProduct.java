@@ -1,8 +1,10 @@
 package com.example.nawalproj.Classes;
 
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION;
+import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_ENDTIME;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE;
+import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_STARTTIME;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.TABLE_AUCTIONPRODUCT;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.TABLE_PRODUCT;
@@ -20,11 +22,14 @@ public class AuctionProduct implements SqlInterface {
     protected double minprice;
     protected String prodDisc;
 
-    public AuctionProduct(String prodType, byte[] prodimg, double minprice, String prodDisc) {
+    protected long starttime,endtime;
+    public AuctionProduct(String prodType, byte[] prodimg, double minprice, String prodDisc,long starttime,long endtime) {
         this.prodType=prodType;
         this.prodimg=prodimg;
         this.minprice=minprice;
         this.prodDisc=prodDisc;
+        this.starttime = starttime;
+        this.endtime = endtime;
     }
     public AuctionProduct(int aid,String prodType, byte[] prodimg, double minprice) {
         this.aid = aid;
@@ -86,6 +91,8 @@ public class AuctionProduct implements SqlInterface {
         values.put(COLUMN_AUCTIONPRODUCT_DESCRIPTION, prodDisc);
         values.put(COLUMN_AUCTIONPRODUCT_MINPRICE, minprice);
         values.put(COLUMN_AUCTIONPRODUCT_IMAGE, prodimg);
+        values.put(COLUMN_AUCTIONPRODUCT_STARTTIME, starttime);
+        values.put(COLUMN_AUCTIONPRODUCT_ENDTIME, endtime);
 
 
 
@@ -126,6 +133,8 @@ public class AuctionProduct implements SqlInterface {
                 COLUMN_AUCTIONPRODUCT_DESCRIPTION,
                 COLUMN_AUCTIONPRODUCT_IMAGE,
                 COLUMN_AUCTIONPRODUCT_MINPRICE,
+                COLUMN_AUCTIONPRODUCT_STARTTIME,
+                COLUMN_AUCTIONPRODUCT_ENDTIME,
         };
 // How you want the results sorted in the resulting Cursor
         String sortOrder =
@@ -147,6 +156,8 @@ public class AuctionProduct implements SqlInterface {
                 COLUMN_AUCTIONPRODUCT_DESCRIPTION,
                 COLUMN_AUCTIONPRODUCT_IMAGE,
                 COLUMN_AUCTIONPRODUCT_MINPRICE,
+                COLUMN_AUCTIONPRODUCT_STARTTIME,
+                COLUMN_AUCTIONPRODUCT_ENDTIME,
         };
         String selection = BaseColumns._ID + " = ?";
         String[] selectionArgs = {id+""};
@@ -173,5 +184,21 @@ public class AuctionProduct implements SqlInterface {
     public void setAid(int aid) {
         this.aid = aid;
     }
+    public long getStarttime() {
+        return starttime;
+    }
+
+    public void setStarttime(long currtime) {
+        this.starttime = starttime;
+    }
+
+    public long getEndtime() {
+        return endtime;
+    }
+
+    public void setEndtime(long longtime) {
+        this.endtime = longtime;
+    }
+
 
 }

@@ -40,11 +40,11 @@ import com.example.nawalproj.R;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_DESCRIPTION;
+import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_ENDTIME;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_IMAGE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_MINPRICE;
 import static com.example.nawalproj.DataBase.TablesString.AuctionProductTable.COLUMN_AUCTIONPRODUCT_TYPE;
 public class PlaceBidActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final long START_TIME_IN_MILLIS = 600000;
     String selectedid;
     DBHelper dbHelper;
     CircleImageView imageView;
@@ -56,10 +56,10 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
     AuctionProduct p;
     int SelectedId;
     double price;
-    long mTimeLeftInMillis = START_TIME_IN_MILLIS;
-    long mEndTime;
-    boolean timeRunning;
-    CountDownTimer countDownTimer;
+    private long mTimeLeftInMillis;
+    private long mEndTime;
+    private boolean timeRunning;
+    private CountDownTimer countDownTimer;
 
 
     @Override
@@ -84,7 +84,7 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
 
 
     }
-    public void startTimer(){
+    private void startTimer(){
         mEndTime = System.currentTimeMillis()+mTimeLeftInMillis;
         countDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
             @Override
@@ -96,6 +96,7 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
             // When the task is over it will print 00:00:00 there
             @Override
             public void onFinish() {
+                timeRunning=false;
                 auctiontime.setText("00:00:00");
                 enterbid.setVisibility(View.GONE);
                 auctionisoverTV.setVisibility(View.VISIBLE);
@@ -103,7 +104,6 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
                 wonprice.setText(productprice.getText());
                 wonprice.setVisibility(View.VISIBLE);
                 placebidbtn.setClickable(false);
-                timeRunning=false;
 
             }
         }.start();
@@ -111,7 +111,6 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
 
     }
     private void updateCountDownText(){
-        NumberFormat f = new DecimalFormat("00");
         int hour =(int) (mTimeLeftInMillis / 3600000) % 24;
         int min = (int)(mTimeLeftInMillis / 1000) / 60;
         int sec = (int)(mTimeLeftInMillis / 1000) % 60;
@@ -149,7 +148,7 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
             description.setText(c.getString(c.getColumnIndexOrThrow(COLUMN_AUCTIONPRODUCT_DESCRIPTION)));
             price = c.getDouble(c.getColumnIndexOrThrow(COLUMN_AUCTIONPRODUCT_MINPRICE));
             productprice.setText(c.getDouble(c.getColumnIndexOrThrow(COLUMN_AUCTIONPRODUCT_MINPRICE))+"₪");
-
+            mTimeLeftInMillis = c.getLong(c.getColumnIndexOrThrow(COLUMN_AUCTIONPRODUCT_ENDTIME))-System.currentTimeMillis();
             byte[] image = c.getBlob(c.getColumnIndexOrThrow(COLUMN_AUCTIONPRODUCT_IMAGE));
             Bitmap bm = BitmapFactory.decodeByteArray(image, 0 ,image.length);
             imageView.setImageBitmap(bm);
@@ -163,12 +162,12 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
         super.onPointerCaptureChanged(hasCapture);
     }
     @Override
-    public void onStop(){
+    protected void onStop(){
         super.onStop();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
         SharedPreferences.Editor editor= prefs.edit();
         editor.putLong("millisLeft", mTimeLeftInMillis);
-        editor.putBoolean("TimeRunning", timeRunning);
+        editor.putBoolean("timerRunning", timeRunning);
         editor.putLong("endTime", mEndTime);
         editor.apply();
         if (countDownTimer!=null){
@@ -176,15 +175,15 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
         }
 }
     @Override
-    public void onStart() {
+    protected void onStart() {
         super.onStart();
         SharedPreferences prefs = getSharedPreferences("prefs", MODE_PRIVATE);
-        mTimeLeftInMillis = prefs.getLong("millisLeft", START_TIME_IN_MILLIS);
-        timeRunning = prefs.getBoolean("TimeRunning", false);
+        timeRunning = prefs.getBoolean("timerRunning", false);
+        updateCountDownText();
         if (timeRunning) {
             mEndTime = prefs.getLong("endTime", 0);
             mTimeLeftInMillis = mEndTime - System.currentTimeMillis();
-            if ((mTimeLeftInMillis < 0)) {
+            if (mTimeLeftInMillis < 0) {
                 mTimeLeftInMillis = 0;
                 timeRunning = false;
                 updateCountDownText();
