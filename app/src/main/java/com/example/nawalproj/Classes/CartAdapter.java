@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.content.Intent.getIntent;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.*;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
@@ -36,6 +37,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
     View view,v;
     Context context;
     int i = 1;
+    int quantity;
     int max ;
     double sum ;
     ViewHolder h;
@@ -64,6 +66,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
         // here we will find the position and start setting the output on our views
         int pid = cartList.get(position).getPid();
         int amount = cartList.get(position).getAmount();
+        quantity=amount;
         Product p = new Product();
         DBHelper dbHelper = new DBHelper(view.getContext());
         dbHelper.OpenReadAble();
@@ -112,6 +115,8 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             tvAmount = itemView.findViewById(R.id.eachCartItemQuantityTV);
             totalprice = v.findViewById(R.id.cartFragmentTotalPriceTv);
             deleteitem = itemView.findViewById(R.id.eachCartItemDeleteBtn);
+
+
             deleteitem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -121,6 +126,7 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
                     cartList.get(getPosition()).Delete(dbHelper.getDb(),cartList.get(getPosition()).getCartid());
                     cartList.remove(getPosition());
                     notifyDataSetChanged();
+                    totalprice.setText(sum+ "₪");
                     dbHelper.Close();
 
                 }
@@ -129,10 +135,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             minusquantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(i>1){
-                       tvAmount.setText(String.valueOf(--i));
+                    if(quantity>1){
+                       tvAmount.setText(String.valueOf(--quantity));
                        sum-=Double.parseDouble(tvJewelryPrice.getText().toString());
-                       totalprice.setText(sum + "₪");
+                       totalprice.setText(sum+ "₪");
                     }
                 }
             });
@@ -140,10 +146,10 @@ public class CartAdapter extends RecyclerView.Adapter<CartAdapter.ViewHolder> {
             plusquantity.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(i<max){
-                        tvAmount.setText(String.valueOf(++i));
+                    if(quantity<max){
+                        tvAmount.setText(String.valueOf(++quantity));
                         sum+=Double.parseDouble(tvJewelryPrice.getText().toString());
-                        totalprice.setText(sum + "₪");
+                        totalprice.setText(sum+ "₪");
                     }
                 }
             });

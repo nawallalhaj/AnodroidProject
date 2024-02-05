@@ -2,6 +2,7 @@ package com.example.nawalproj.UserPages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -15,12 +16,14 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.nawalproj.Classes.Cart;
+import com.example.nawalproj.Classes.CartAdapter;
 import com.example.nawalproj.Classes.Product;
 import com.example.nawalproj.DataBase.DBHelper;
 import com.example.nawalproj.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import static android.os.Build.VERSION_CODES.Q;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_BUYPRICE;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_DESCRIPTION;
 import static com.example.nawalproj.DataBase.TablesString.ProductTable.COLUMN_PRODUCT_IMAGE;
@@ -65,9 +68,6 @@ public class DetailedActivity extends AppCompatActivity {
                 if(quantity==0) {
                     quantity++;
                     displayQuantity();
-                    double prodPrice = basePrice * quantity;
-                    prodPrice = basePrice;
-                    productprice.setText(prodPrice + "₪");
                     SaveCart();
                 }else
                     SaveCart();
@@ -87,10 +87,6 @@ public class DetailedActivity extends AppCompatActivity {
                 else {
                     quantity++;
                     displayQuantity();
-                    double prodPrice = basePrice * quantity;
-                    if(quantity==0)
-                        prodPrice = basePrice;
-                    productprice.setText(prodPrice +"₪" );
                 }
 
             }

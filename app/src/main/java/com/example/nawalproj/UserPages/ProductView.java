@@ -17,6 +17,7 @@ import com.example.nawalproj.MainPages.SignupActivity;
 import com.example.nawalproj.R;
 import android.database.Cursor;
 import android.provider.BaseColumns;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -41,8 +42,6 @@ public class ProductView extends AppCompatActivity {
     ProductAdapter mAdapter;
     DBHelper dbHelper;
     String selctedCategory;
-    CardView cardView;
-    ImageView favbtn, cartiv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +56,7 @@ public class ProductView extends AppCompatActivity {
         dbHelper = dbHelper.OpenReadAble();
         Product p = new Product(), p2;
         Cursor c;
-        if (selctedCategory == "LastPieces") {
+        if (selctedCategory.equals("LastPieces")) {
             c = p.SelectLastPieces(dbHelper.getDb());
         } else
             c = p.SelectByCategory(dbHelper.getDb(), selctedCategory);

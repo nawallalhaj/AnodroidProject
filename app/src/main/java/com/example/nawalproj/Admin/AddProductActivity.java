@@ -149,12 +149,14 @@ public class AddProductActivity extends AppCompatActivity implements View.OnClic
             p.setProdimg(image);
         }
         dbHelper.OpenWriteAble();
-        p.Update(dbHelper.getDb(),SelectedId);
+        if(p.Update(dbHelper.getDb(),SelectedId)>0){
+            Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
+            Intent i = new Intent(this,ShowProduct.class);
+            startActivity(i);
+        }
         dbHelper.Close();
-        Toast.makeText(this, "Updated Successfully", Toast.LENGTH_SHORT).show();
-        Intent i = new Intent(this,ShowProduct.class);
-        startActivity(i);
-    }
+
+       }
         if(view.getId()==R.id.btDelete){
         dbHelper.OpenWriteAble();
         p.Delete(dbHelper.getDb(),SelectedId);
