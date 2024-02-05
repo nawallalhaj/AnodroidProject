@@ -23,6 +23,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.nawalproj.Classes.AuctionProduct;
 import com.example.nawalproj.Classes.Product;
 import com.example.nawalproj.DataBase.DBHelper;
+import com.example.nawalproj.DataBase.MyBroadcastReceiver;
 import com.example.nawalproj.MainPages.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -104,6 +105,10 @@ public class PlaceBidActivity extends AppCompatActivity implements View.OnClickL
                 wonprice.setText(productprice.getText());
                 wonprice.setVisibility(View.VISIBLE);
                 placebidbtn.setClickable(false);
+                double highestBidPrice = Double.parseDouble(productprice.getText().toString());
+                Intent auctionHourOverIntent = new Intent(MyBroadcastReceiver.AUCTION_HOUR_OVER_ACTION);
+                auctionHourOverIntent.putExtra(MyBroadcastReceiver.EXTRA_HIGHEST_BID_PRICE, highestBidPrice);
+                sendBroadcast(auctionHourOverIntent);
 
             }
         }.start();
